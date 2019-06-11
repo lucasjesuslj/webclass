@@ -1,1 +1,1 @@
-web: mvn clean install tomcat7:run
+web: java -jar target/java-getting-started-1.0.jar
