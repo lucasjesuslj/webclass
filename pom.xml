@@ -25,10 +25,13 @@
   </dependencies>
   <build>
   <plugins>
-  <plugin>
+  	<plugin>
         <groupId>com.heroku.sdk</groupId>
         <artifactId>heroku-maven-plugin</artifactId>
         <version>2.0.8</version>
+        <configuration>
+        	<appName>WebClass</appName>
+        </configuration>
       </plugin>
       <plugin>
             <groupId>org.apache.maven.plugins</groupId>
