@@ -1,1 +1,1 @@
-web: java -jar target/WebCLass.jar
+web: java -jar target/WebCLass.war
