@@ -230,10 +230,11 @@
 										<ul class="list-group">
 											<!--  <a href="" target="_blank"> -->
 											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
-											<p><%=aula.getDescricao()%></p>
+											<p><%=aula.getDescricao()%>
 											<button type="submit" name="codAula" value="<%=aula.getCodAula()%>">
-												<i class="fa fa-angle-right" aria-hidden="true">Acessar</i>
+												Acessar
 											</button>
+											</p>
 											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
 											</li>
 											</a>

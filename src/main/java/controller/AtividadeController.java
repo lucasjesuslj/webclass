@@ -6,6 +6,7 @@ import dao.AtividadeDAO;
 import dao.AtividadeDAOImpl;
 import entity.Atividade;
 import entity.Aula;
+import exception.AulaDAOException;
 
 public class AtividadeController {
 	
@@ -35,6 +36,22 @@ public class AtividadeController {
 
 		return atividades;
 
+	}
+	
+	public Atividade getById(int id) {
+		
+		Atividade atividade = null;
+
+		atividade = dao.getById(id);
+		
+		if (atividade == null) {
+			
+			throw new AulaDAOException("Atividade não encontrada");
+			
+		}
+
+		return atividade;
+		
 	}
 
 }

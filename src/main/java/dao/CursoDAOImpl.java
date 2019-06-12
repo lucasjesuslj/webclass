@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import entity.Curso;
+import entity.Professor;
 import exception.CursoDAOException;
 
 public class CursoDAOImpl implements CursoDAO {
@@ -224,6 +225,61 @@ public class CursoDAOImpl implements CursoDAO {
 		} finally {
 			JDBCUtil.close(con);
 		}
+		
+	}
+
+	@Override
+	public List<Curso> getAllByProfessor(Professor professor) throws CursoDAOException {
+		
+		Connection con = null;
+
+		List<Curso> cursos = new ArrayList<Curso>();
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "select cod_curso, nome_curso, descricao, duracao, estatus, data_criacao, "
+					   + "data_alteracao from wc_curso where estatus = 'D' and cod_professor = ?";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			st.setInt(1, professor.getCodProfessor());
+			
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				int codCurso = rs.getInt("cod_curso");
+				String nome = rs.getString("nome_curso");
+				String descricao = rs.getString("descricao");
+				int duracao = rs.getInt("duracao");
+				String estatus = rs.getString("estatus");
+				Date dataCriacao = rs.getDate("data_criacao");
+				Date dataAlteracao = rs.getDate("data_alteracao");
+
+				Curso curso = new Curso();
+
+				curso.setCodCurso(codCurso);
+				curso.setNomeCurso(nome);
+				curso.setDescricao(descricao);
+				curso.setDuracao(duracao);
+				curso.setEstatus(estatus);
+				curso.setDataCriacao(dataCriacao);
+				curso.setDataAlteracao(dataAlteracao);
+
+				cursos.add(curso);
+
+			}
+			
+			st.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+		return cursos;
 		
 	}
 

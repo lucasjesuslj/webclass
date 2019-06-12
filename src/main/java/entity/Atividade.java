@@ -3,6 +3,7 @@ package entity;
 public class Atividade {
 
 	private int codAtividade;
+	private String nome;
 	private String descricao;
 	private int tipo;
 	private String resposta;
@@ -14,6 +15,14 @@ public class Atividade {
 
 	public void setCodAtividade(int codAtividade) {
 		this.codAtividade = codAtividade;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDescricao() {

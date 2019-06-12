@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="entity.Curso"%>
-<%@page import="entity.Aluno"%>
-<%@page import="entity.Aula"%>
-<%@page import="entity.Atividade"%>
-<%@page import="controller.CursoController"%>
-<%@page import="controller.AtividadeController"%>
-<%@page import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso" %>
+<%@ page
+	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Categoria, 
+	entity.Professor, controller.ProfessorController, entity.Aula, controller.AulaController,
+	entity.Aluno, entity.Curso"%>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -14,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Aula</title>
+<title>WEBclass - Home - Aluno</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
@@ -37,33 +34,28 @@
 
 <body>
 
-	<!-- Recupera a instância do Aluno criado na sessão e o curso acessado pelo botão "Acessar"-->
 	<%
-		Aluno aluno = (Aluno) session.getAttribute("Aluno");
-		Curso curso = (Curso) session.getAttribute("Curso");
-		Aula aula = (Aula) session.getAttribute("Aula");
+		Professor professor = (Professor) session.getAttribute("Professor");
 	%>
-
 	<!-- Todos os elementos da página -->
 	<div class="wrapper">
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
 				<!-- Nome do Aluno que Logou -->
-				<h3><%=aluno.getNome()%></h3>
+				<h3>Lucas Jesus de Oliveira</h3>
 			</div>
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
-				<!-- ID do usuário-->
-				<p>
-					ID:
-					<%=aluno.getCodAluno()%></p>
-				<p>
-					Curso:
-					<%=curso.getCodCurso()%></p>
+				<!-- Tipo do usuário logado e o número do id -->
+				<p>Professor#1213</p>
 				<!-- Menu do Aluno -->
-				<li class="active"><a href="telaHomeAluno.html">Cursos</a></li>
-				<li><a href="telaCursosAluno.html">Meus Cursos</a></li>
+				<li><a href="telaHomeProfessor.html">Cursos Ministrados</a></li>
+				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
+				<li><a href="CadastrarAtividade.jsp">Cadastrar
+						Atividade</a></li>
+				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
@@ -105,53 +97,51 @@
 				</div>
 			</nav>
 			<!-- Fim do menu superior -->
-			<!-- Conteúdo da Aula -->
+			<!-- Conteúdo da página -->
 			<div class="container">
-
+				<!-- área do título -->
 				<div class="row">
-					<h2><%=aula.getDescricao()%></h2>
-					<hr />
+					<div class="col-md-12">
+						<p>Cadastrar Aula</p>
+					</div>
 				</div>
-				<!-- Fim da área de pesquisa -->
-				
-				
-				<h3></h3>
-				
+				<!-- Fim ddo título -->
 				<!-- Tag que faz a linha de divisão -->
 				<hr />
 				<!--  Área dos Cards-->
 				<div class="row ">
-					<!--  Começo coluna individual do card-->
-					<div class="col-md-12 ">
-						<div class="container" style="margin-top: 30px">
+					<div class="col-md-12 espamento-image"></div>
+					<div class="col-md-12">
+						<form>
+							<div class="form-group row">
+								<label class="col-sm-auto col-form-label" for="nomeAula">Nome
+									da Aula</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="nomeAula"
+										id="nomeAula">
+								</div>
+								<label class="col-sm-auto col-form-label" for="categoria">Nome
+									do Curso</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="selectCategoria">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 espacamento-bottom ">
+									<button type="submit" class="btn  btn-danger">Cancelar</button>
+									<button type="submit" class="btn btn-success">Salvar</button>
+								</div>
+							</div>
 
-							<%
-							
-							AtividadeController atividadeController = new AtividadeController();
-							
-							List<Atividade> atividades = new ArrayList<Atividade>();
-							
-							atividades = atividadeController.getByAula(aula);
-							
-							for (Atividade atividade : atividades)
-							{
-							
-							%>
-							
-							<p><%=atividade.getDescricao()%>
-							<button type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
-								Acessar
-							</button>
-							</p>
-							<% 
-							}
-							%>
-
-						</div>
-						<!--  Fim coluna individual do card-->
+						</form>
 					</div>
 				</div>
-
 				<!--  Fim Área dos cards-->
 			</div>
 			<!--  Fim do Corpo da página -->

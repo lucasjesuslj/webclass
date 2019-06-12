@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="controller.CategoriaController"%>
 <%@ page
-	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Categoria, entity.Professor, controller.ProfessorController"%>
+	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Categoria, 
+	entity.Professor, controller.ProfessorController"%>
 <!DOCTYPE html>
 <html lang="pt">
 

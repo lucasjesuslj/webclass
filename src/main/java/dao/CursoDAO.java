@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 import entity.Curso;
+import entity.Professor;
 import exception.CursoDAOException;
 
 public interface CursoDAO {
@@ -17,6 +18,8 @@ public interface CursoDAO {
 	
 	//HD - Habilitados e Desabilitados
 	List<Curso> getAllHD() throws CursoDAOException;
+	
+	List<Curso> getAllByProfessor(Professor professor) throws CursoDAOException;
 	
 	//Atualiza o Estatus do Curso
 	void updateEstatus(Curso curso, String estatus);

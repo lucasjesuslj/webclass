@@ -40,6 +40,7 @@ public class AulaDAOImpl implements AulaDAO {
 
 	@Override
 	public Aula getById(int id) {
+		
 		Connection con = null;
 
 		Aula aula = null;

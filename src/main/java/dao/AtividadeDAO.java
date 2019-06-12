@@ -10,4 +10,6 @@ public interface AtividadeDAO {
 
 	List<Atividade> getByAula(Aula aula);
 	
+	Atividade getById(int id);
+	
 }

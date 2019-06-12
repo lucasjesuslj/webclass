@@ -13,6 +13,7 @@ import entity.Coordenador;
 import entity.Professor;
 import exception.AlunoDAOException;
 import exception.CoordenadorDAOException;
+import exception.ProfessorDAOException;
 
 @WebServlet("/view/login")
 public class LoginController extends HttpServlet {
@@ -79,7 +80,7 @@ public class LoginController extends HttpServlet {
 			//Verifica se retorna algum objeto Professor ou se lança uma exceção
 			try {
 				professor = professorController.getByEmailAndSenha(email, senha);
-			} catch (AlunoDAOException e) {
+			} catch (ProfessorDAOException e) {
 				try {
 					req.setAttribute("erro", e.getMessage());
 					req.getRequestDispatcher("./Login.jsp").forward(req, res);

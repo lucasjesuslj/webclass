@@ -154,7 +154,9 @@
 									src="https://placeimg.com/640/480/nature">
 								<!--  Corpo do card-->
 								<div class="card-body">
-									<h5 class="card-title"><%=curso.getNomeCurso()%> - <%=curso.getEstatus()%></h5>
+									<h5 class="card-title"><%=curso.getNomeCurso()%>
+										-
+										<%=curso.getEstatus()%></h5>
 									<p class="card-text"><%=curso.getDescricao()%></p>
 								</div>
 								<!-- Fim do corpo do card-->

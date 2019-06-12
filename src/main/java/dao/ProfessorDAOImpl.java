@@ -47,7 +47,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select nome from wc_professor where email like ? and senha like ?";
+			String sql = "select cod_professor, nome from wc_professor where email like ? and senha like ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, email);
@@ -57,10 +57,12 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 
 			if (rs.first()) {
 
+				int codProfessor = rs.getInt("cod_professor");
 				String nome = rs.getString("nome");
 
 				professor = new Professor();
 
+				professor.setCodProfessor(codProfessor);
 				professor.setNome(nome);
 
 			}
