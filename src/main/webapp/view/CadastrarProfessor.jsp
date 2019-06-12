@@ -54,7 +54,7 @@
 					data-toggle="collapse" aria-expanded="false"
 					class="dropdown-toggle">Cursos</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="telaHomeCoordenador.html">Cursos Cadastrados</a>
+						<li><a href="CoordenadorHome.jsp">Cursos Cadastrados</a>
 						</li>
 						<li class="active"><a href="CadastrarCurso.jsp">Cadastrar
 								Novo</a></li>
