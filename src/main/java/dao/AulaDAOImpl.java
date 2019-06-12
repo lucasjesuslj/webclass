@@ -47,7 +47,7 @@ public class AulaDAOImpl implements AulaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select cod_aula, descricao, sequencia from wc_aula where cod_curso = ? order by sequencia";
+			String sql = "select cod_aula, descricao from wc_aula where cod_curso = ? order by dataCriacao";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -59,13 +59,11 @@ public class AulaDAOImpl implements AulaDAO {
 
 				int codAula = rs.getInt("cod_aula");
 				String descricao = rs.getString("descricao");
-				int sequencia = rs.getInt("sequencia");
 
 				Aula aula = new Aula();
 
 				aula.setCodAula(codAula);
 				aula.setDescricao(descricao);
-				aula.setSequencia(sequencia);
 
 				aulas.add(aula);
 

@@ -10,6 +10,7 @@ import java.util.List;
 import entity.Aluno;
 import entity.Curso;
 import entity.CursoAtivo;
+import exception.CursoAtivoDAOException;
 
 public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 
@@ -88,7 +89,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 	}
 
 	@Override
-	public CursoAtivo getByAlunoAndCurso(Curso curso, Aluno aluno) {
+	public CursoAtivo getByAlunoAndCurso(Curso curso, Aluno aluno) throws CursoAtivoDAOException {
 
 		Connection con = null;
 		CursoAtivo cursoAtivo = null;
@@ -117,7 +118,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoAtivoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

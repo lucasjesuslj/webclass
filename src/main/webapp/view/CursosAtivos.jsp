@@ -52,10 +52,10 @@
 				
 				<!-- Menu do Aluno -->
 				<li><a
-					href="http://localhost:8080/WebClass/view/AlunoHome.jsp">Cursos</a>
+					href="AlunoHome.jsp">Cursos</a>
 				</li>
 				<li class="active"><a
-					href="http://localhost:8080/WebClass/view/CursosAtivos.jsp">Meus
+					href="CursosAtivos.jsp">Meus
 						Cursos</a></li>
 			</ul>
 		</nav>

@@ -106,7 +106,61 @@ public class CursoDAOImpl implements CursoDAO {
 			con = JDBCUtil.getConnection();
 
 			String sql = "select cod_curso, nome_curso, descricao, duracao, estatus, data_criacao, "
-					   + "data_alteracao from wc_curso where estatus = 'A' ";
+					   + "data_alteracao from wc_curso where estatus = 'H' ";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				int codCurso = rs.getInt("cod_curso");
+				String nome = rs.getString("nome_curso");
+				String descricao = rs.getString("descricao");
+				int duracao = rs.getInt("duracao");
+				String estatus = rs.getString("estatus");
+				Date dataCriacao = rs.getDate("data_criacao");
+				Date dataAlteracao = rs.getDate("data_alteracao");
+
+				Curso curso = new Curso();
+
+				curso.setCodCurso(codCurso);
+				curso.setNomeCurso(nome);
+				curso.setDescricao(descricao);
+				curso.setDuracao(duracao);
+				curso.setEstatus(estatus);
+				curso.setDataCriacao(dataCriacao);
+				curso.setDataAlteracao(dataAlteracao);
+
+				cursos.add(curso);
+
+			}
+			
+			st.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+		return cursos;
+	}
+
+	@Override
+	public List<Curso> getAllHD() {
+		
+		Connection con = null;
+
+		List<Curso> cursos = new ArrayList<Curso>();
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "select cod_curso, nome_curso, descricao, duracao, case "+
+		                 "when estatus = 'D' THEN 'Desabilitado' "+
+		                 "when estatus = 'H' THEN 'Habilitado' "+
+		                 "end estatus, data_criacao, data_alteracao from wc_curso";
 
 			PreparedStatement st = con.prepareStatement(sql);
 

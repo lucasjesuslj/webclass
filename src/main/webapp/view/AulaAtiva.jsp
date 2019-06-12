@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="entity.Coordenador"%>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -26,36 +25,20 @@
         <!-- Menu lateral  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <!-- Nome do Coordenador que Logou -->
-				<%
-					Coordenador coordenador = (Coordenador) session.getAttribute("Coordenador");
-				%>
-				<h3><%=coordenador.getNome()%></h3>
+                <!-- Nome do Aluno que Logou -->
+                <h3>Lucas Jesus de Oliveira</h3>
             </div>
             <!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
             <ul class="list-unstyled components">
-            
-                <!-- ID usuário -->
-				<p>ID: <%=coordenador.getCodCoordenador()%></p>
-				
+                <!-- Tipo do usuário logado e o número do id -->
+                <p>Aluno#1213</p> 
                 <!-- Menu do Aluno -->
                 <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cursos</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="telaHomeCoordenador.html">Cursos Cadastrados</a>
-                            </li>
-                            <li class="active">
-                                <a href="CadastrarCurso.jsp">Cadastrar Novo</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li >
-                        <a href="CadastrarCategoria.jsp">Cadastrar Categorias</a>
-                    </li>
-                    <li >
-                            <a href="CadastrarProfessor.jsp">Cadastrar Professor</a>
-                        </li>
+                    <a href="telaHomeAluno.html">Cursos</a>
+                </li>
+                <li>
+                    <a href="telaCursosAluno.html">Meus Cursos</a>
+                </li>
             </ul>
         </nav>
         <!-- Fim do menu lateral  -->        
@@ -95,49 +78,53 @@
             <!-- Fim do menu superior -->
             <!-- Conteúdo da página -->
             <div class="container" >
-                <!-- área do título -->
+
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>Cadastrar Professor</p>
-                    </div>
+                    <h2>Nome da Aula</h2>
+                <hr />
                 </div>
-                <!-- Fim ddo título -->
+                <!-- Fim da área de pesquisa -->
                 <!-- Tag que faz a linha de divisão -->
                 <hr />
                 <!--  Área dos Cards-->
                 <div class="row ">
-                    <div class="col-md-12 espamento-image">
+                    <!--  Começo coluna individual do card-->
+                    <div  class="col-md-12 ">
+                        <div class="container" style="margin-top:30px">
+            
+                            <ul class="list-group ">
+                                <a href="" target="_blank" >
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        atividade
+                                   
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                 
+                                </li>
+                                </a>
+                                <a href="" target="_blank" >
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            conteúdo
+                                       
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                     
+                                    </li>
+                                    </a>
+                                    <a href="" target="_blank" >
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                               atividade
+                                           
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                         
+                                        </li>
+                                        </a>
+                            </ul>
                             
+                        </div>
+                        <!--  Fim coluna individual do card-->
                     </div>
-                    <div class="col-md-12">
-                        <form>
-                                <div class="form-group row">
-                                    <label class="col-sm-auto col-form-label" for="nomeCurso">Nome do Professor</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nomeCurso">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                        <label class="col-sm-auto col-form-label" for="email">E-mail</label>
-                                        <div class="col-sm-5">
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                        <label class="col-sm-auto col-form-label" for="senha">Senha</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="senha">
-                                        </div>
-                                    </div>
-                               
-                                <div class="row">
-                                    <div class="col-sm-12 espacamento-bottom ">
-                                        <button type="submit" class="btn  btn-danger">Cancelar</button>
-                                        <button type="submit" class="btn btn-success">Salvar</button>
-                                    </div>
-                                </div>
-                                
-                            </form>
-                        </div> 
                 </div>
+            
                 <!--  Fim Área dos cards-->
             </div>
             <!--  Fim do Corpo da página -->

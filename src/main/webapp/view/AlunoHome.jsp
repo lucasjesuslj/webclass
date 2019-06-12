@@ -1,6 +1,6 @@
- <%@page import="controller.CursoController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="controller.CursoController"%>
 <%@ page import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -44,7 +44,7 @@
 				<!-- Tipo do usuário logado e o número do id -->
 				<p>ID: <%=aluno.getCodAluno()%></p>
 				<!-- Menu do Aluno -->
-				<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
+				<li class="active"><a href="./AlunoHome.jsp">Cursos</a></li>
 				<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
 			</ul>
 			</nav>

@@ -6,6 +6,7 @@ import dao.CursoAtivoDAOImpl;
 import entity.Aluno;
 import entity.Curso;
 import entity.CursoAtivo;
+import exception.CursoAtivoDAOException;
 
 public class CursoAtivoController {
 
@@ -39,7 +40,16 @@ public class CursoAtivoController {
 	//Retorna um CursoAtivo se o Aluno ainda não estiver matriculado no Curso
 	public CursoAtivo getByAlunoAndCurso(Curso curso, Aluno aluno) {
 
-		return dao.getByAlunoAndCurso(curso, aluno);
+		CursoAtivo cursoAtivo = null;
+		
+		cursoAtivo = dao.getByAlunoAndCurso(curso, aluno);
+		
+		if (cursoAtivo == null) {
+			
+			throw new CursoAtivoDAOException("Você precisa se cadastrar no Curso pra acessar as aulas");
+		}
+		
+		return cursoAtivo;
 		
 	}
 }

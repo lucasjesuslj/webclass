@@ -3,9 +3,12 @@
 <%@page import="entity.CursoAtivo"%>
 <%@page import="controller.CursoAtivoController"%>
 <%@page import="controller.CursoController"%>
+<%@page import="controller.AulaController"%>
 <%@page import="entity.Curso"%>
 <%@page import="entity.Aluno"%>
-<%@ page
+<%@page import="entity.Aula"%>
+<%@page import="exception.CursoAtivoDAOException"%>
+<%@page
 	import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso, entity.CursoAtivo"%>
 <!DOCTYPE html>
 <html lang="pt">
@@ -14,7 +17,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Curso</title>
+<title>WEBclass - Home - Aluno</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
@@ -48,10 +51,11 @@
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<!-- Nome do Aluno que Logou -->
-				<h3><%=aluno.getNome()%></h3>
+				<div class="sidebar-header">
+					<!-- Nome do Aluno que Logou -->
+					<h3><%=aluno.getNome()%></h3>
+				</div>
 			</div>
-
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- ID do usuário-->
@@ -61,20 +65,14 @@
 				<p>
 					Curso:
 					<%=curso.getCodCurso()%></p>
-
 				<!-- Menu do Aluno -->
 				<li class="active"><a href="#homeSubmenu"
 					data-toggle="collapse" aria-expanded="false"
 					class="dropdown-toggle">Cursos</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="telaHomeCoordenador.html">Cursos Cadastrados</a>
-						</li>
-						<li class="active"><a href="telaCadastroCurso.html">Cadastrar
-								Novo</a></li>
-					</ul></li>
-				<li><a href="telaCategoriasCoordenador.html">Categorias</a></li>
-				<li><a href="telaProfessoresCoordenador.html">professor</a></li>
-			</ul>
+						<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
+						<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
+					</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
 
@@ -91,12 +89,10 @@
 							</h1>
 						</li>
 					</ul>
-
 					<!-- Botão de Ativar o menu lateral -->
 					<button type="button " id="sidebarCollapse" class="btn btn-light">
 						<i class="fa fa-bars"></i>
 					</button>
-
 					<!-- Botão do menu superior quando está no mobile -->
 					<button class="btn btn-light d-inline-block d-lg-none ml-auto"
 						type="button" data-toggle="collapse"
@@ -105,11 +101,10 @@
 						aria-label="Toggle navigation">
 						<i class="fa fa-ellipsis-v"></i>
 					</button>
-
 					<!-- itens do menu superior -->
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="#">Perfil</a>
+							<li class="nav-item active"><a class="nav-link" href="#">perfil</a>
 							</li>
 							<li class="nav-item active"><a class="nav-link" href="#">Sair</a>
 							</li>
@@ -120,21 +115,18 @@
 			<!-- Fim do menu superior -->
 			<!-- Conteúdo da página -->
 			<div class="container">
-				<!-- área do título -->
-				<div class="row">
-					<div class="col-md-12">
-						<p>Cadastrar Curso</p>
-					</div>
-				</div>
-				
+
+				<!-- Fim do título -->
+				<!-- Tag que faz a linha de divisão -->
+				<hr />
+
 				<!-- Mostra mensagem de Erro caso o cadastro de Curso Ativo lance uma exceção OU -->
 				<!-- Mostra mensagem de confirmação caso o CursoAtivo seja cadastrado com sucesso -->
-				<% 
-				if (request.getAttribute("mensagem") != null) {
-				
-			    %>
- 
-			    <div class="alert alert-success alert-dismissible fade show"
+				<%
+					if (request.getAttribute("mensagem") != null) {
+				%>
+
+				<div class="alert alert-success alert-dismissible fade show"
 					role="alert">
 					<%=request.getAttribute("mensagem")%>
 					<button type="button" class="close" data-dismiss="alert"
@@ -142,15 +134,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-	
+
 				<%
-				
-				request.removeAttribute("mensagem");
-				}
-				
-				else if (request.getAttribute("erro") != null) {
+					request.removeAttribute("mensagem");
+					}
+
+					else if (request.getAttribute("erro") != null) {
 				%>
-				
+
 				<div class="alert alert-warning alert-dismissible fade show"
 					role="alert">
 					<%=request.getAttribute("erro")%>
@@ -159,15 +150,12 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				
+
 				<%
 					request.removeAttribute("erro");
-				}
+					}
 				%>
-				
-				<!-- Fim doo título -->
-				<!-- Tag que faz a linha de divisão -->
-				<hr />
+
 				<!--  Área dos Cards-->
 				<div class="row ">
 					<div class="col-md-12 mb-2">
@@ -175,44 +163,42 @@
 							src="https://placeimg.com/640/480/nature" width="1110"
 							height="400">
 					</div>
-					
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-sm-4">
-							
-							    <!-- Armazena no objeto cursoInfo as informações do curso recuperadas pelo codCurso-->
-							    <% 
-							    
-							    CursoController cursoController = new CursoController(); 
-							    
-							    Curso cursoInfo = new Curso();
-							    
-							    cursoInfo = cursoController.getById(curso.getCodCurso());
-							    cursoInfo.setCodCurso(curso.getCodCurso());
-							    							    
-							    %>
+								<!-- Armazena no objeto cursoInfo as informações do curso recuperadas pelo codCurso-->
+								<%
+									CursoController cursoController = new CursoController();
+
+									Curso cursoInfo = new Curso();
+
+									cursoInfo = cursoController.getById(curso.getCodCurso());
+									cursoInfo.setCodCurso(curso.getCodCurso());
+								%>
 								<h3><%=cursoInfo.getNomeCurso()%></h3>
 							</div>
 							<div class="col-sm-2 offset-6">
-							  
-							    <% 
-							    
-							    CursoAtivoController cursoAtivoController = new CursoAtivoController();
-							    
-							    CursoAtivo cursoAtivo = null;
-							    
-							    cursoAtivo = cursoAtivoController.getByAlunoAndCurso(curso, aluno);
-							    
-							    if (cursoAtivo == null){
-							    
-							    %>
-							    
-							    <form action="./cadastrarCursoAtivo" method="post">
+								<%
+									CursoAtivoController cursoAtivoController = new CursoAtivoController();
+
+									CursoAtivo cursoAtivo = null;
+
+									try {
+										cursoAtivo = cursoAtivoController.getByAlunoAndCurso(curso, aluno);
+									} catch (CursoAtivoDAOException e) {
+										
+									}
+
+									if (cursoAtivo == null) {
+								%>
+
+								<form action="./cadastrarCursoAtivo" method="post">
 									<button type="submit" class="btn  btn-primary">Matricular-se</button>
 								</form>
-								
-								<%}%>
-								
+
+								<%
+									}
+								%>
 							</div>
 						</div>
 						<div class="alinhamento-form ">
@@ -220,10 +206,10 @@
 								role="tablist">
 								<li class="nav-item"><a class="nav-link active"
 									id="home-tab" data-toggle="tab" href="#home" role="tab"
-									aria-controls="home" aria-selected="true">Login</a></li>
+									aria-controls="home" aria-selected="true">Aulas</a></li>
 								<li class="nav-item"><a class="nav-link" id="profile-tab"
 									data-toggle="tab" href="#profile" role="tab"
-									aria-controls="profile" aria-selected="false">Cadastrar</a></li>
+									aria-controls="profile" aria-selected="false">Descrição</a></li>
 							</ul>
 						</div>
 						<div class="tab-content" id="myTabContent">
@@ -231,58 +217,41 @@
 								aria-labelledby="home-tab">
 								<div class="container" style="margin-top: 30px">
 
-									<ul class="list-group ">
-										<li class="list-group-item">
-										<li class="list-group-item">Aula 1
-											<button>
-												<i class="fa fa-caret-square-o-right"></i>
-											</button>
-										</li>
-										<li class="list-group-item">Homepage</li>
-										<li class="list-group-item">Homepage</li>
-									</ul>
+									<%
+										AulaController aulaController = new AulaController();
 
+										List<Aula> aulas = new ArrayList<Aula>();
+
+										aulas = aulaController.getByCurso(curso);
+
+										for (Aula aula : aulas) {
+									%>
+									<form action="./cursoAtivo" method="post">
+										<ul class="list-group">
+											<!--  <a href="" target="_blank"> -->
+											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
+											<p><%=aula.getDescricao()%></p>
+											<button type="submit">
+												<i class="fa fa-angle-right" aria-hidden="true">Acessar</i>
+											</button>
+											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
+											</li>
+											</a>
+										</ul>
+									</form>
+									<%
+										}
+									%>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="profile" role="tabpanel"
 								aria-labelledby="profile-tab">
-								<form class="alinhamento-form">
-									<div class="form-group row">
-										<label class="col-sm-12 col-form-label" for="nome">Nome
-											Completo</label>
-										<div class="col-sm-12">
-											<input type="text" class="form-control" id="nome" required />
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-12 col-form-label" for="email">E-mail</label>
-										<div class="col-sm-12">
-											<input type="email" class="form-control" id="email" required />
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-12 col-form-label" for="password">Senha</label>
-										<div class="col-sm-12">
-											<input type="password" class="form-control" id="password"
-												required />
-										</div>
-									</div>
-									<div
-										class="form-group row justify-content-center alinhamento-botao">
-										<div class="col-md-4 ">
-											<button type="submit" class="btn btn-primary">Login
-												Now</button>
-										</div>
-									</div>
-
-								</form>
+								<p><%=cursoInfo.getDescricao()%></p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!--  Fim Área dos cards-->
+				<!--  Fim Área dos cards -->
 			</div>
 			<!--  Fim do Corpo da página -->
 

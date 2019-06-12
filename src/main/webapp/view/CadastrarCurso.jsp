@@ -1,6 +1,6 @@
-<%@page import="controller.CategoriaController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="controller.CategoriaController"%>
 <%@ page
 	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Categoria, entity.Professor, controller.ProfessorController"%>
 <!DOCTYPE html>
@@ -52,12 +52,12 @@
 					data-toggle="collapse" aria-expanded="false"
 					class="dropdown-toggle">Cursos</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="telaHomeCoordenador.html">Cursos Cadastrados</a>
+						<li><a href="CoordenadorHome.jsp">Cursos Cadastrados</a>
 						</li>
 						<li class="active"><a href="CadastrarCurso.jsp">Cadastrar Novo</a></li>
 					</ul></li>
-				<li><a href="./CadastrarCategoria.jsp">Cadastrar Categoria</a></li>
-				<li><a href="./CadastrarProfessor.jsp">Cadastrar Professor</a></li>
+				<li><a href="CadastrarCategoria.jsp">Cadastrar Categoria</a></li>
+				<li><a href="CadastrarProfessor.jsp">Cadastrar Professor</a></li>
 			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
