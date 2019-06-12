@@ -201,4 +201,30 @@ public class CursoDAOImpl implements CursoDAO {
 		return cursos;
 	}
 
+	@Override
+	public void updateEstatus(Curso curso, String estatus) {
+	
+		Connection con = null;
+		
+		try {
+			con = JDBCUtil.getConnection();
+			
+			String sql = "update wc_curso set estatus = ? where cod_curso = ?";
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setString(1, estatus);
+			st.setInt(2, curso.getCodCurso());
+			
+			st.executeUpdate();
+			st.close();
+			
+		} catch (SQLException e) {
+			throw new CursoDAOException();
+		} finally {
+			JDBCUtil.close(con);
+		}
+		
+	}
+
 }

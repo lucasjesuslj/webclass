@@ -6,6 +6,7 @@ import dao.AulaDAO;
 import dao.AulaDAOImpl;
 import entity.Aula;
 import entity.Curso;
+import exception.AulaDAOException;
 
 public class AulaController {
 
@@ -49,6 +50,22 @@ public class AulaController {
 		}
 
 		return quantidade;
+		
+	}
+	
+	public Aula getById (int id) {
+		
+		Aula aula = null;
+
+		aula = dao.getById(id);
+		
+		if (aula == null) {
+			
+			throw new AulaDAOException("Aula não encontrada");
+			
+		}
+
+		return aula;
 		
 	}
 

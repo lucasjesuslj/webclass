@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +39,16 @@ public class CadastrarCategoriaController extends HttpServlet{
 			} catch (ServletException | IOException ie) {
 				ie.printStackTrace();
 			}
+		}
+		
+	}
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	
+		try {
+			res.sendRedirect("./CadastrarCategoria.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}

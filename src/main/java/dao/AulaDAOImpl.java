@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import entity.Aula;
 import entity.Curso;
+import exception.AulaDAOException;
 
 public class AulaDAOImpl implements AulaDAO {
 
@@ -19,12 +20,11 @@ public class AulaDAOImpl implements AulaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "insert into wc_aula (descricao, sequencia, cod_curso) values (?, ?, ?)";
+			String sql = "insert into wc_aula (descricao, cod_curso) values (?, ?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, aula.getDescricao());
-			st.setInt(2, aula.getSequencia());
 			st.setInt(3, aula.getCurso().getCodCurso());
 
 			st.executeUpdate();
@@ -36,6 +36,46 @@ public class AulaDAOImpl implements AulaDAO {
 			JDBCUtil.close(con);
 		}
 
+	}
+
+	@Override
+	public Aula getById(int id) {
+		Connection con = null;
+
+		Aula aula = null;
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "select descricao, dataCriacao from wc_aula where cod_aula = ?";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			st.setInt(1, id);
+
+			ResultSet rs = st.executeQuery();
+
+			if (rs.first()) {
+
+				String descricao = rs.getString("descricao");
+				java.sql.Date dataCriacao = rs.getDate("dataCriacao");
+
+				aula = new Aula();
+
+				aula.setDescricao(descricao);
+				aula.setDataCriaco(dataCriacao);
+
+			}
+
+			st.close();
+
+		} catch (SQLException e) {
+			throw new AulaDAOException();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+		return aula;
 	}
 
 	@Override
@@ -68,7 +108,7 @@ public class AulaDAOImpl implements AulaDAO {
 				aulas.add(aula);
 
 			}
-			
+
 			st.close();
 
 		} catch (SQLException e) {
@@ -80,13 +120,13 @@ public class AulaDAOImpl implements AulaDAO {
 		return aulas;
 	}
 
-	public int getCountByCurso(Curso curso){
+	public int getCountByCurso(Curso curso) {
 
 		Connection con = null;
 		int quantidade = 0;
 
 		try {
-	
+
 			con = JDBCUtil.getConnection();
 
 			String sql = "select count(cod_aula) from wc_aula where cod_curso = ?";
@@ -98,11 +138,11 @@ public class AulaDAOImpl implements AulaDAO {
 			ResultSet rs = st.executeQuery();
 
 			if (rs.first()) {
-			
-				quantidade = rs.getInt("count(cod_aula)"); 
+
+				quantidade = rs.getInt("count(cod_aula)");
 
 			}
-			
+
 			st.close();
 
 		} catch (SQLException e) {
@@ -112,7 +152,7 @@ public class AulaDAOImpl implements AulaDAO {
 		}
 
 		return quantidade;
-		
+
 	}
 
 }

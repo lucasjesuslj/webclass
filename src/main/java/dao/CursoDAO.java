@@ -10,13 +10,16 @@ public interface CursoDAO {
 	void insertCurso(Curso coordenador) throws CursoDAOException;
 
 	//Recupera as informações do Curso pelo codCurso
-	Curso getById(int id) throws CursoDAOException;;
+	Curso getById(int id) throws CursoDAOException;
 
 	//Recupera todos os Cursos cadastrados com Estatus = 'A'
-	List<Curso> getAll() throws CursoDAOException;;
+	List<Curso> getAll() throws CursoDAOException;
 	
 	//HD - Habilitados e Desabilitados
-	List<Curso> getAllHD() throws CursoDAOException;;
+	List<Curso> getAllHD() throws CursoDAOException;
+	
+	//Atualiza o Estatus do Curso
+	void updateEstatus(Curso curso, String estatus);
 	
 }
 

@@ -1,24 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="entity.CursoAtivo"%>
-<%@page import="controller.CursoAtivoController"%>
 <%@page import="controller.CursoController"%>
 <%@page import="controller.AulaController"%>
-<%@page import="entity.Curso"%>
-<%@page import="entity.Aluno"%>
 <%@page import="entity.Aula"%>
-<%@page import="exception.CursoAtivoDAOException"%>
-<%@page
-	import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso, entity.CursoAtivo"%>
-<!DOCTYPE html>
-<html lang="pt">
-
+<%@ page
+	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Curso"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WEBclass - Home - Aluno</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>WEBclass - Home - Coordenador</title>
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -36,43 +27,40 @@
 	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
 	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
 	crossorigin="anonymous"></script>
+<title>WEBclass - Home - Aluno</title>
+
 </head>
 
 <body>
-
-	<!-- Recupera a instância do Aluno criado na sessão e o curso acessado pelo botão "Acessar"-->
-	<%
-		Aluno aluno = (Aluno) session.getAttribute("Aluno");
-		Curso curso = (Curso) session.getAttribute("Curso");
-	%>
-
 	<!-- Todos os elementos da página -->
 	<div class="wrapper">
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
-			<div class="sidebar-header">
-				<div class="sidebar-header">
-					<!-- Nome do Aluno que Logou -->
-					<h3><%=aluno.getNome()%></h3>
-				</div>
-			</div>
-			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
-			<ul class="list-unstyled components">
-				<!-- ID do usuário-->
-				<p>
-					ID:
-					<%=aluno.getCodAluno()%></p>
-				<p>
-					Curso:
-					<%=curso.getCodCurso()%></p>
-				<!-- Menu do Aluno -->
-				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="false"
-					class="dropdown-toggle">Cursos</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
-						<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
-					</ul>
+		<div class="sidebar-header">
+			<!-- Nome do Coordenador que Logou -->
+			<%
+				Coordenador coordenador = (Coordenador) session.getAttribute("Coordenador");
+				Curso curso = (Curso) session.getAttribute("Curso");
+			%>
+			<h3><%=coordenador.getNome()%></h3>
+		</div>
+		<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
+		<ul class="list-unstyled components">
+			<!-- Tipo do usuário logado e o número do id -->
+			<p>
+				ID:
+				<%=coordenador.getCodCoordenador()%></p>
+			<!-- Menu do Aluno -->
+			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"
+				aria-expanded="false" class="dropdown-toggle">Cursos</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li><a href="CoordenadorHome.jsp">Cursos Cadastrados</a></li>
+					<li class="active"><a href="CadastrarCurso.jsp">Cadastrar
+							Novo</a></li>
+				</ul></li>
+			<li><a href="CadastrarCategoria.jsp">Cadastrar Categoria</a></li>
+			<li><a href="CadastrarProfessor.jsp">Cadastrar Professor</a></li>
+		</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
 
@@ -80,37 +68,37 @@
 		<div id="content">
 			<!-- Menu superior -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container-fluid">
-					<!-- Lista do Logo/Nome -->
+			<div class="container-fluid">
+				<!-- Lista do Logo/Nome -->
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item active">
+						<h1 class="nome-site">
+							WEB<span>class</span>
+						</h1>
+					</li>
+				</ul>
+				<!-- Botão de Ativar o menu lateral -->
+				<button type="button " id="sidebarCollapse" class="btn btn-light">
+					<i class="fa fa-bars"></i>
+				</button>
+				<!-- Botão do menu superior quando está no mobile -->
+				<button class="btn btn-light d-inline-block d-lg-none ml-auto"
+					type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<i class="fa fa-ellipsis-v"></i>
+				</button>
+				<!-- itens do menu superior -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="nav navbar-nav ml-auto">
-						<li class="nav-item active">
-							<h1 class="nome-site">
-								WEB<span>class</span>
-							</h1>
+						<li class="nav-item active"><a class="nav-link" href="#">Perfil</a>
 						</li>
+						<li class="nav-item active"><a class="nav-link"
+							href="http://localhost:8080/WebClass/Login.jsp">Sair</a></li>
 					</ul>
-					<!-- Botão de Ativar o menu lateral -->
-					<button type="button " id="sidebarCollapse" class="btn btn-light">
-						<i class="fa fa-bars"></i>
-					</button>
-					<!-- Botão do menu superior quando está no mobile -->
-					<button class="btn btn-light d-inline-block d-lg-none ml-auto"
-						type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fa fa-ellipsis-v"></i>
-					</button>
-					<!-- itens do menu superior -->
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="#">perfil</a>
-							</li>
-							<li class="nav-item active"><a class="nav-link" href="#">Sair</a>
-							</li>
-						</ul>
-					</div>
 				</div>
+			</div>
 			</nav>
 			<!-- Fim do menu superior -->
 			<!-- Conteúdo da página -->
@@ -176,30 +164,23 @@
 									cursoInfo.setCodCurso(curso.getCodCurso());
 								%>
 								<h3><%=cursoInfo.getNomeCurso()%></h3>
-							</div>
-							<div class="col-sm-2 offset-6">
+								<div class="col-sm-2 offset-6">
+								<!--  Verifica se o curso está Desabilitado para mostrar o botão -->
 								<%
-									CursoAtivoController cursoAtivoController = new CursoAtivoController();
-
-									CursoAtivo cursoAtivo = null;
-
-									try {
-										cursoAtivo = cursoAtivoController.getByAlunoAndCurso(curso, aluno);
-									} catch (CursoAtivoDAOException e) {
-										
-									}
-
-									if (cursoAtivo == null) {
+									if ("D".equals(cursoInfo.getEstatus())) {
 								%>
 
-								<form action="./cadastrarCursoAtivo" method="post">
-									<button type="submit" class="btn  btn-primary">Matricular-se</button>
+								<form action="./atualizarEstatusCurso" method="post">
+									<button type="submit" name="estatus" value="H"
+										class="btn  btn-primary">Habilitar</button>
 								</form>
 
 								<%
 									}
 								%>
+
 							</div>
+						</div>
 						</div>
 						<div class="alinhamento-form ">
 							<ul class="nav nav-tabs justify-content-center" id="myTab"
@@ -226,12 +207,12 @@
 
 										for (Aula aula : aulas) {
 									%>
-									<form action="./aulaAtiva" method="get">
+									<form action="./cursoAtivo" method="post">
 										<ul class="list-group">
 											<!--  <a href="" target="_blank"> -->
 											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
 											<p><%=aula.getDescricao()%></p>
-											<button type="submit" name="codAula" value="<%=aula.getCodAula()%>">
+											<button type="submit">
 												<i class="fa fa-angle-right" aria-hidden="true">Acessar</i>
 											</button>
 											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
@@ -278,5 +259,4 @@
 				});
 			</script>
 </body>
-
 </html>

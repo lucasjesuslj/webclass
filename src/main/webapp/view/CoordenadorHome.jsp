@@ -146,7 +146,7 @@
 					<!--  Começo coluna individual do card-->
 
 					<div class="col-md-4 col-sm-4 mt-3">
-						<form action="./cursoAtivo" method="get">
+						<form action="./cursoCoordenador" method="get">
 							<!--Card-->
 							<div class="card">
 								<!--  Imagem do card-->
