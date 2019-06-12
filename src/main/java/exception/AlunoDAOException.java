@@ -12,12 +12,4 @@ public class AlunoDAOException extends RuntimeException{
 		super(msg);
 	}
 
-	public AlunoDAOException(Throwable trw) {
-		super(trw);
-	}
-
-	public AlunoDAOException(String msg, Throwable trw) {
-		super(msg, trw);
-	}
-	
 }

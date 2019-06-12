@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import entity.Categoria;
+import exception.CategoriaDAOException;
 import dao.CategoriaDAO;
 import dao.CategoriaDAOImpl;
 
@@ -14,8 +15,8 @@ public class CategoriaController {
 
 		try {
 			dao.insertCategoria(categoria);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (CategoriaDAOException e) {
+			throw new CategoriaDAOException("Categoria \""+categoria.getNome()+"\" já está cadastrada");
 		}
 
 	}

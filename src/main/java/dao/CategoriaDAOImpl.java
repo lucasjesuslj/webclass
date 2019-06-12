@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import entity.Categoria;
+import exception.CategoriaDAOException;
 
 public class CategoriaDAOImpl implements CategoriaDAO {
 
 	@Override
-	public void insertCategoria(Categoria categoria) {
+	public void insertCategoria(Categoria categoria) throws CategoriaDAOException{
 
 		Connection con = null;
 
@@ -28,7 +29,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CategoriaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

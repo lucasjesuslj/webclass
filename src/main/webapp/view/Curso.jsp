@@ -1,12 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@page import="entity.CursoAtivo"%>
 <%@page import="controller.CursoAtivoController"%>
 <%@page import="controller.CursoController"%>
 <%@page import="entity.Curso"%>
 <%@page import="entity.Aluno"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ page
-	import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso, entity.CursoAtivo%>
+	import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso, entity.CursoAtivo"%>
 <!DOCTYPE html>
 <html lang="pt">
 

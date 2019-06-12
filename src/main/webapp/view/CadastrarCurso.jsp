@@ -56,8 +56,8 @@
 						</li>
 						<li class="active"><a href="CadastrarCurso.jsp">Cadastrar Novo</a></li>
 					</ul></li>
-				<li><a href="telaCategoriasCoordenador.html">Categorias</a></li>
-				<li><a href="telaProfessoresCoordenador.html">Professor</a></li>
+				<li><a href="./CadastrarCategoria.jsp">Cadastrar Categoria</a></li>
+				<li><a href="./CadastrarProfessor.jsp">Cadastrar Professor</a></li>
 			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->

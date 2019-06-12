@@ -63,7 +63,6 @@ public class CadastrarCursoController extends HttpServlet {
 			} catch (ServletException | IOException ie) {
 				ie.printStackTrace();
 			}
-			e.printStackTrace();
 		}
 		
 	}
