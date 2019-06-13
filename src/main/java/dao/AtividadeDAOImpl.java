@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import entity.Atividade;
 import entity.Aula;
+import exception.AtividadeDAOException;
 import exception.AulaDAOException;
 
 public class AtividadeDAOImpl implements AtividadeDAO {
@@ -34,7 +35,7 @@ public class AtividadeDAOImpl implements AtividadeDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

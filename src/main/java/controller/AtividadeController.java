@@ -1,11 +1,11 @@
 package controller;
 
 import java.util.List;
-
 import dao.AtividadeDAO;
 import dao.AtividadeDAOImpl;
 import entity.Atividade;
 import entity.Aula;
+import exception.AtividadeDAOException;
 import exception.AulaDAOException;
 
 public class AtividadeController {
@@ -17,8 +17,8 @@ public class AtividadeController {
 
 		try {
 			dao.insertAtividade(atividade);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (AtividadeDAOException e) {
+			throw new AtividadeDAOException("Erro ao inserir Atividade");
 		}
 
 	}

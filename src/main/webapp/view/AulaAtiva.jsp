@@ -4,8 +4,11 @@
 <%@page import="entity.Aluno"%>
 <%@page import="entity.Aula"%>
 <%@page import="entity.Atividade"%>
+<%@page import="entity.CursoAtivo"%>
+<%@page import="entity.AulaAtiva"%>
 <%@page import="controller.CursoController"%>
 <%@page import="controller.AtividadeController"%>
+<%@page import="controller.AulaAtivaController"%>
 <%@page import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso" %>
 <!DOCTYPE html>
 <html lang="pt">
@@ -114,8 +117,21 @@
 				</div>
 				<!-- Fim da área de pesquisa -->
 				
+				<% 
 				
-				<h3></h3>
+				AulaAtivaController aulaAtivaController = new AulaAtivaController();
+				
+				CursoAtivo cursoAtivo = new CursoAtivo();
+				cursoAtivo.setCurso(curso);
+				cursoAtivo.setAluno(aluno);
+				
+				AulaAtiva aulaAtiva = new AulaAtiva();				
+				
+				aulaAtiva = aulaAtivaController.getByAlunoCursoAndAula(cursoAtivo, aula);
+								
+				%>
+				
+				<h3>Status: <%=aulaAtiva.getEstatus()%></h3>
 				
 				<!-- Tag que faz a linha de divisão -->
 				<hr />

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import entity.Aula;
 import entity.Curso;
+import entity.Professor;
 import exception.AulaDAOException;
 
 public class AulaDAOImpl implements AulaDAO {
@@ -25,13 +26,13 @@ public class AulaDAOImpl implements AulaDAO {
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, aula.getDescricao());
-			st.setInt(3, aula.getCurso().getCodCurso());
+			st.setInt(2, aula.getCurso().getCodCurso());
 
 			st.executeUpdate();
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AulaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -154,6 +155,50 @@ public class AulaDAOImpl implements AulaDAO {
 
 		return quantidade;
 
+	}
+
+	@Override
+	public List<Aula> getByProfessor(Professor professor) {
+		
+		Connection con = null;
+		List<Aula> aulas = new ArrayList<Aula>();
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "select cod_aula, a.descricao from wc_aula a inner join wc_curso c "
+					   + "on c.cod_curso = a.cod_curso where c.cod_professor = ? order by a.descricao";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			st.setInt(1, professor.getCodProfessor());
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				int codAula = rs.getInt("cod_aula");
+				String descricao = rs.getString("a.descricao");
+
+				Aula aula = new Aula();
+
+				aula.setCodAula(codAula);
+				aula.setDescricao(descricao);
+
+				aulas.add(aula);
+
+			}
+
+			st.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+		return aulas;
+		
 	}
 
 }

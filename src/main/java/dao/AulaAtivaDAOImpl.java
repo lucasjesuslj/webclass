@@ -51,7 +51,10 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 			
-			String sql = "select estatus from wc_aula_ativa where cod_curso = ? and cod_aluno = ? and cod_aula = ?"; 
+			String sql = "select case estatus " 
+					   + "when 'P' then 'Em Progresso' "
+					   + "when 'C' then 'Concluída' "
+					   + "end estatus from wc_aula_ativa where cod_curso = ? and cod_aluno = ? and cod_aula = ?"; 
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			

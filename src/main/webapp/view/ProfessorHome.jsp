@@ -53,7 +53,7 @@
 					<%=professor.getCodProfessor()%></p>
 				<!-- Menu do Aluno -->
 				<li><a href="telaHomeProfessor.html">Cursos Ministrados</a></li>
-				<li><a href="telaCadastroAula.html">Cadastro Aula</a></li>
+				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
 				<li><a href="CadastrarAtividade.jsp">Cadastrar Atividade</a></li>
 				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a>
 				</li>

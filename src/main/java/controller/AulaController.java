@@ -6,6 +6,7 @@ import dao.AulaDAO;
 import dao.AulaDAOImpl;
 import entity.Aula;
 import entity.Curso;
+import entity.Professor;
 import exception.AulaDAOException;
 
 public class AulaController {
@@ -17,8 +18,8 @@ public class AulaController {
 
 		try {
 			dao.insertAula(aula);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (AulaDAOException e) {
+			throw new AulaDAOException("Não cadastrou");
 		}
 
 	}
@@ -66,6 +67,20 @@ public class AulaController {
 		}
 
 		return aula;
+		
+	}
+	
+	public List<Aula> getByProfessor(Professor professor){
+		
+		List<Aula> aulas = null;
+
+		try {
+			aulas = dao.getByProfessor(professor);
+		} catch (AulaDAOException e) {
+			e.printStackTrace();
+		}
+
+		return aulas;
 		
 	}
 

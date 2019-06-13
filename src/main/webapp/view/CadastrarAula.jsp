@@ -3,7 +3,7 @@
 <%@ page
 	import="java.util.List, java.util.ArrayList, entity.Coordenador, entity.Categoria, 
 	entity.Professor, controller.ProfessorController, entity.Aula, controller.AulaController,
-	entity.Aluno, entity.Curso"%>
+	entity.Aluno, entity.Curso, controller.CursoController"%>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -42,15 +42,15 @@
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<!-- Nome do Aluno que Logou -->
-				<h3>Lucas Jesus de Oliveira</h3>
+				<!-- Nome do Professor que Logou -->
+				<h3><%=professor.getNome()%></h3>
 			</div>
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- Tipo do usuário logado e o número do id -->
-				<p>Professor#1213</p>
+				<p>ID: <%=professor.getCodProfessor()%></p>
 				<!-- Menu do Aluno -->
-				<li><a href="telaHomeProfessor.html">Cursos Ministrados</a></li>
+				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
 				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
 				<li><a href="CadastrarAtividade.jsp">Cadastrar
 						Atividade</a></li>
@@ -108,33 +108,79 @@
 				<!-- Fim ddo título -->
 				<!-- Tag que faz a linha de divisão -->
 				<hr />
+				
+				<!-- Mostra mensagem de Erro caso o cadastro de Curso lance uma exceção OU -->
+				<!-- Mostra mensagem de confirmação caso o Curso seja cadastrado com sucesso -->
+				<% 
+				if (request.getAttribute("mensagem") != null) {
+				
+			    %>
+ 
+			    <div class="alert alert-success alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("mensagem")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+	
+				<%
+				
+				request.removeAttribute("mensagem");
+				}
+				
+				else if (request.getAttribute("erro") != null) {
+				%>
+				
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("erro")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<%
+					request.removeAttribute("erro");
+				}
+				%>
+				
 				<!--  Área dos Cards-->
 				<div class="row ">
 					<div class="col-md-12 espamento-image"></div>
 					<div class="col-md-12">
-						<form>
+						<form action="./cadastrarAula" method="post">
 							<div class="form-group row">
 								<label class="col-sm-auto col-form-label" for="nomeAula">Nome
 									da Aula</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="nomeAula"
+									<input type="text" class="form-control" name="descricao"
 										id="nomeAula">
 								</div>
 								<label class="col-sm-auto col-form-label" for="categoria">Nome
 									do Curso</label>
 								<div class="col-sm-4">
-									<select class="form-control" id="selectCategoria">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+									<select class="form-control" name="curso" id="selectCategoria">
+										<%
+											CursoController cursoController = new CursoController();
+
+											List<Curso> cursos = new ArrayList<Curso>();
+
+											cursos = cursoController.getAllByProfessor(professor);
+
+											for (Curso curso : cursos) {
+										%>
+										<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
+										<%
+											}
+										%>
 									</select>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12 espacamento-bottom ">
-									<button type="submit" class="btn  btn-danger">Cancelar</button>
 									<button type="submit" class="btn btn-success">Salvar</button>
 								</div>
 							</div>
