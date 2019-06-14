@@ -155,7 +155,7 @@
 							
 							%>
 							
-							<p><%=atividade.getDescricao()%>
+							<p><%=atividade.getNome()%>
 							<button type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
 								Acessar
 							</button>
