@@ -1,13 +1,11 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import entity.Aula;
 import entity.Curso;
 import exception.CursoDAOException;
@@ -21,6 +19,7 @@ public class CadastrarAulaController extends HttpServlet {
 
 		AulaController aulaController = new AulaController();
 
+		String nomeAula = req.getParameter("nomeAula");
 		String descricao = req.getParameter("descricao");
 		int codCurso = Integer.parseInt(req.getParameter("curso"));
 
@@ -29,6 +28,7 @@ public class CadastrarAulaController extends HttpServlet {
 
 		curso.setCodCurso(codCurso);
 
+		aula.setNome(nomeAula);
 		aula.setDescricao(descricao);
 		aula.setCurso(curso);
 

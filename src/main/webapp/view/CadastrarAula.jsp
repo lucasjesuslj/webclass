@@ -48,12 +48,13 @@
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- Tipo do usuário logado e o número do id -->
-				<p>ID: <%=professor.getCodProfessor()%></p>
+				<p>
+					ID:
+					<%=professor.getCodProfessor()%></p>
 				<!-- Menu do Aluno -->
 				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
 				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
-				<li><a href="CadastrarAtividade.jsp">Cadastrar
-						Atividade</a></li>
+				<li><a href="CadastrarAtividade.jsp">Cadastrar Atividade</a></li>
 				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a>
 				</li>
 			</ul>
@@ -108,15 +109,14 @@
 				<!-- Fim ddo título -->
 				<!-- Tag que faz a linha de divisão -->
 				<hr />
-				
+
 				<!-- Mostra mensagem de Erro caso o cadastro de Curso lance uma exceção OU -->
 				<!-- Mostra mensagem de confirmação caso o Curso seja cadastrado com sucesso -->
-				<% 
-				if (request.getAttribute("mensagem") != null) {
-				
-			    %>
- 
-			    <div class="alert alert-success alert-dismissible fade show"
+				<%
+					if (request.getAttribute("mensagem") != null) {
+				%>
+
+				<div class="alert alert-success alert-dismissible fade show"
 					role="alert">
 					<%=request.getAttribute("mensagem")%>
 					<button type="button" class="close" data-dismiss="alert"
@@ -124,15 +124,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-	
+
 				<%
-				
-				request.removeAttribute("mensagem");
-				}
-				
-				else if (request.getAttribute("erro") != null) {
+					request.removeAttribute("mensagem");
+					}
+
+					else if (request.getAttribute("erro") != null) {
 				%>
-				
+
 				<div class="alert alert-warning alert-dismissible fade show"
 					role="alert">
 					<%=request.getAttribute("erro")%>
@@ -141,79 +140,89 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				
+
 				<%
 					request.removeAttribute("erro");
-				}
+					}
 				%>
-				
+
 				<!--  Área dos Cards-->
+				<form action="./cadastrarAula" method="post">
 				<div class="row ">
 					<div class="col-md-12 espamento-image"></div>
 					<div class="col-md-12">
-						<form action="./cadastrarAula" method="post">
+						
 							<div class="form-group row">
 								<label class="col-sm-auto col-form-label" for="nomeAula">Nome
 									da Aula</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" name="descricao"
+									<input type="text" class="form-control" name="nomeAula"
 										id="nomeAula">
 								</div>
-								<label class="col-sm-auto col-form-label" for="categoria">Nome
-									do Curso</label>
-								<div class="col-sm-4">
-									<select class="form-control" name="curso" id="selectCategoria">
-										<%
-											CursoController cursoController = new CursoController();
-
-											List<Curso> cursos = new ArrayList<Curso>();
-
-											cursos = cursoController.getAllByProfessor(professor);
-
-											for (Curso curso : cursos) {
-										%>
-										<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
-										<%
-											}
-										%>
-									</select>
+								<label class="col-sm-12 col-form-label" for="descricao">Descrição</label>
+								<div class="col-sm-12">
+									<textarea class="form-control" name="descricao"
+										id="exampleFormControlTextarea1" rows="5" required></textarea>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-sm-12 espacamento-bottom ">
-									<button type="submit" class="btn btn-success">Salvar</button>
-								</div>
-							</div>
+					</div>
 
-						</form>
+					<label class="col-sm-auto col-form-label" for="categoria">Nome
+						do Curso</label>
+					<div class="col-sm-4">
+						<select class="form-control" name="curso" id="selectCategoria">
+							<%
+								CursoController cursoController = new CursoController();
+
+								List<Curso> cursos = new ArrayList<Curso>();
+
+								cursos = cursoController.getAllByProfessor(professor);
+
+								for (Curso curso : cursos) {
+							%>
+							<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
+							<%
+								}
+							%>
+						</select>
 					</div>
 				</div>
-				<!--  Fim Área dos cards-->
+				<div class="row">
+					<div class="col-sm-12 espacamento-bottom ">
+						<button type="submit" class="btn btn-success">Salvar</button>
+					</div>
+				</div>
+			</form>
 			</div>
-			<!--  Fim do Corpo da página -->
+		</div>
+		
+	</div>
+	<!--  Fim Área dos cards-->
+	</div>
+	<!--  Fim do Corpo da página -->
 
-			<!-- jQuery CDN - Slim version (=without AJAX) -->
-			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-				integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-				crossorigin="anonymous"></script>
-			<!-- Popper.JS -->
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-				integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-				crossorigin="anonymous"></script>
-			<!-- Bootstrap JS -->
-			<script
-				src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-				integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-				crossorigin="anonymous"></script>
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<!-- Popper.JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
 
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('#sidebarCollapse').on('click', function() {
-						$('#sidebar').toggleClass('active');
-					});
-				});
-			</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
 </body>
 
 </html>

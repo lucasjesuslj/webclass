@@ -5,28 +5,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import entity.Aula;
 import entity.Curso;
 import entity.Professor;
 import exception.AulaDAOException;
 
-public class AulaDAOImpl implements AulaDAO {
+public class AulaDAOImpl implements AulaDAO{
 
 	@Override
-	public void insertAula(Aula aula) {
+	public void insertAula(Aula aula) throws AulaDAOException{
 
 		Connection con = null;
 
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "insert into wc_aula (descricao, cod_curso) values (?, ?)";
+			String sql = "insert into wc_aula (nome_aula, descricao, cod_curso) values (?, ?, ?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
-			st.setString(1, aula.getDescricao());
-			st.setInt(2, aula.getCurso().getCodCurso());
+			st.setString(1, aula.getNome());
+			st.setString(2, aula.getDescricao());
+			st.setInt(3, aula.getCurso().getCodCurso());
 
 			st.executeUpdate();
 			st.close();
@@ -49,7 +51,7 @@ public class AulaDAOImpl implements AulaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select descricao, dataCriacao from wc_aula where cod_aula = ?";
+			String sql = "select nome_aula, descricao, data_criacao from wc_aula where cod_aula = ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -59,16 +61,19 @@ public class AulaDAOImpl implements AulaDAO {
 
 			if (rs.first()) {
 
+				String nomeAula = rs.getString("nome_aula");  
 				String descricao = rs.getString("descricao");
-				java.sql.Date dataCriacao = rs.getDate("dataCriacao");
+				Date dataCriacao = rs.getDate("data_criacao");
 
 				aula = new Aula();
 
+				aula.setNome(nomeAula);
 				aula.setDescricao(descricao);
-				aula.setDataCriaco(dataCriacao);
+				aula.setDataCriacao(dataCriacao);
 
 			}
 
+			rs.close();
 			st.close();
 
 		} catch (SQLException e) {
@@ -89,7 +94,8 @@ public class AulaDAOImpl implements AulaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select cod_aula, descricao from wc_aula where cod_curso = ? order by dataCriacao";
+			String sql = "select cod_aula, nome_aula, descricao, data_criacao from wc_aula "
+					   + "where cod_curso = ? order by data_criacao";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -100,12 +106,16 @@ public class AulaDAOImpl implements AulaDAO {
 			while (rs.next()) {
 
 				int codAula = rs.getInt("cod_aula");
+				String nomeAula = rs.getString("nome_aula");
 				String descricao = rs.getString("descricao");
-
+				Date dataCriacao = rs.getDate("data_criacao");
+				
 				Aula aula = new Aula();
 
 				aula.setCodAula(codAula);
+				aula.setNome(nomeAula);
 				aula.setDescricao(descricao);
+				aula.setDataCriacao(dataCriacao);
 
 				aulas.add(aula);
 

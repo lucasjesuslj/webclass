@@ -8,7 +8,7 @@ import exception.AulaDAOException;
 
 public interface AulaDAO {
 
-	void insertAula(Aula aula);
+	void insertAula(Aula aula) throws AulaDAOException;
 
 	Aula getById(int id) throws AulaDAOException;
 	

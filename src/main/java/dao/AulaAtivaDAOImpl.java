@@ -21,14 +21,13 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "insert into wc_aula_ativa (cod_curso, cod_aluno, cod_aula, estatus) " + "values (?,?,?,?)";
+			String sql = "insert into wc_aula_ativa (cod_curso, cod_aluno, cod_aula) " + "values (?,?,?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setInt(1, aulaAtiva.getCursoAtivo().getCurso().getCodCurso());
 			st.setInt(2, aulaAtiva.getCursoAtivo().getAluno().getCodAluno());
 			st.setInt(3, aulaAtiva.getAula().getCodAula());
-			st.setString(4, aulaAtiva.getEstatus());
 
 			st.executeUpdate();
 			st.close();

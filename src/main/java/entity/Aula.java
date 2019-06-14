@@ -5,6 +5,7 @@ import java.util.Date;
 public class Aula {
 
 	private int codAula;
+	private String nome;
 	private String descricao;
 	private Date dataCriacao;
 	private Curso curso;
@@ -17,6 +18,14 @@ public class Aula {
 		this.codAula = codAula;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -25,12 +34,12 @@ public class Aula {
 		this.descricao = descricao;
 	}
 
-	public Date getDataCriaco() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriaco(Date dataCriaco) {
-		this.dataCriacao = dataCriaco;
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 	public Curso getCurso() {

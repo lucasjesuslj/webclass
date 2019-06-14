@@ -65,8 +65,8 @@
 					Curso:
 					<%=curso.getCodCurso()%></p>
 				<!-- Menu do Aluno -->
-				<li class="active"><a href="telaHomeAluno.html">Cursos</a></li>
-				<li><a href="telaCursosAluno.html">Meus Cursos</a></li>
+				<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
+				<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
 			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
@@ -110,9 +110,10 @@
 			<!-- Fim do menu superior -->
 			<!-- Conteúdo da Aula -->
 			<div class="container">
-
+			
+				<h2><%=aula.getNome()%></h2>
 				<div class="row">
-					<h2><%=aula.getDescricao()%></h2>
+					
 					<hr />
 				</div>
 				<!-- Fim da área de pesquisa -->

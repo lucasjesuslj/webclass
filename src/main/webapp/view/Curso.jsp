@@ -17,7 +17,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Home - Aluno</title>
+<title>WEBclass - Curso - Aluno</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
@@ -183,9 +183,9 @@
 
 									CursoAtivo cursoAtivo = null;
 
-									try {
+									try{
 										cursoAtivo = cursoAtivoController.getByAlunoAndCurso(curso, aluno);
-									} catch (CursoAtivoDAOException e) {
+									} catch(CursoAtivoDAOException e){
 										
 									}
 
@@ -228,12 +228,14 @@
 									%>
 									<form action="./aulaAtiva" method="get">
 										<ul class="list-group">
-											<!--  <a href="" target="_blank"> -->
-											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
 											<p><%=aula.getDescricao()%>
+											
+											<!--  Verifica se o aluno está matriculado para pode acessar Aula -->
+											<% if (cursoAtivo != null) { %>
 											<button type="submit" name="codAula" value="<%=aula.getCodAula()%>">
 												Acessar
 											</button>
+											<% } %>
 											</p>
 											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
 											</li>

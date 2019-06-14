@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import entity.Curso;
 
 @WebServlet("/view/cursoCoordenador")
-public class CoordenadorGetCursoController extends HttpServlet {
+public class GetCursoControlladorController extends HttpServlet {
 
 	private static final long serialVersionUID = -2235189052672651500L;
 

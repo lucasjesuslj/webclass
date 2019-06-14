@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,7 +74,7 @@ public class LoginController extends HttpServlet {
 
 			ProfessorController professorController = new ProfessorController();
 
-			Professor professor = new Professor();
+			Professor professor = null;
 
 			//Verifica se retorna algum objeto Professor ou se lança uma exceção
 			try {
@@ -115,7 +114,7 @@ public class LoginController extends HttpServlet {
 
 			CoordenadorController coordenadorController = new CoordenadorController();
 
-			Coordenador coordenador = new Coordenador();
+			Coordenador coordenador = null;
 
 			//Verifica se retorna algum objeto Coordenador ou se lança uma exceção
 			try {

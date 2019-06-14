@@ -51,12 +51,11 @@
 				<p>
 					ID:
 					<%=professor.getCodProfessor()%></p>
-				<!-- Menu do Aluno -->
-				<li><a href="telaHomeProfessor.html">Cursos Ministrados</a></li>
+				<!-- Menu do Professor -->
+				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
 				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
 				<li><a href="CadastrarAtividade.jsp">Cadastrar Atividade</a></li>
-				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a>
-				</li>
+				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a></li>
 			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
@@ -147,7 +146,7 @@
 					<!--  Começo coluna individual do card-->
 					<div class="col-md-4 col-sm-4 mt-3">
 						<!--  Card-->
-						<form action="./cursoAtivo" method="get">
+						<form action="./cursoProfessor" method="get">
 						<div class="card">
 							<!--  Imagem do card-->
 							<img class="card-img-top" alt="Card header image"
