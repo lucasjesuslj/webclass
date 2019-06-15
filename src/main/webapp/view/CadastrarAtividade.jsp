@@ -50,7 +50,7 @@
 			<ul class="list-unstyled components">
 				<!-- ID usuário -->
 				<p>
-					ID:
+					Professor - ID:
 					<%=professor.getCodProfessor()%></p>
 				<!-- Menu do Aluno -->
 				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>

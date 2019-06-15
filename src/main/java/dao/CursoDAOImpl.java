@@ -56,8 +56,9 @@ public class CursoDAOImpl implements CursoDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select nome_curso, descricao, duracao, estatus, data_criacao, data_alteracao from wc_curso where "
-					+ "cod_curso = ?";
+			String sql = "select nome_curso, descricao, duracao, estatus, data_criacao, data_alteracao, cod_professor "
+					   + "from wc_curso where "
+					   + "cod_curso = ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -73,15 +74,19 @@ public class CursoDAOImpl implements CursoDAO {
 				String estatus = rs.getString("estatus");
 				java.sql.Date dataCriacao = rs.getDate("data_criacao");
 				java.sql.Date dataAlteracao = rs.getDate("data_alteracao");
+				int codProfessor = rs.getInt("cod_professor");
 
 				curso = new Curso();
+				Professor professor = new Professor();
 				
+				professor.setCodProfessor(codProfessor);
 				curso.setNomeCurso(nome);
 				curso.setDescricao(descricao);
 				curso.setDuracao(duracao);
 				curso.setEstatus(estatus);
 				curso.setDataCriacao(dataCriacao);
 				curso.setDataAlteracao(dataAlteracao);
+				curso.setProfessor(professor);
 
 			}
 
@@ -239,7 +244,7 @@ public class CursoDAOImpl implements CursoDAO {
 			con = JDBCUtil.getConnection();
 
 			String sql = "select cod_curso, nome_curso, descricao, duracao, estatus, data_criacao, "
-					   + "data_alteracao from wc_curso where cod_professor = ?";
+					   + "data_alteracao from wc_curso where estatus = 'H' and cod_professor = ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 

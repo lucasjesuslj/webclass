@@ -47,7 +47,7 @@
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- ID usuário -->
-				<p>ID: <%=coordenador.getCodCoordenador()%></p>
+				<p>Coordenador - ID: <%=coordenador.getCodCoordenador()%></p>
 				<!-- Menu do Aluno -->
 				<li class="active"><a href="#homeSubmenu"
 					data-toggle="collapse" aria-expanded="false"
@@ -168,7 +168,7 @@
 									do Curso</label>
 								<div class="col-sm-4">
 									<input type="text" name="nomeCurso" class="form-control"
-										id="nomeCurso">
+										id="nomeCurso" required/>
 								</div>
 
 								<label class="col-sm-auto col-form-label" for="categoria">Categoria</label>

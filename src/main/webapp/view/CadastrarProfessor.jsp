@@ -46,7 +46,7 @@
 
 				<!-- ID usuário -->
 				<p>
-					ID:
+					Coordenador - ID:
 					<%=coordenador.getCodCoordenador()%></p>
 
 				<!-- Menu do Aluno -->

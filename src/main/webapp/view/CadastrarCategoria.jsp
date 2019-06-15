@@ -45,7 +45,7 @@
 			<ul class="list-unstyled components">
 				<!-- Tipo do usuário logado e o número do id -->
 				<p>
-					ID:
+					Coordenador - ID:
 					<%=coordenador.getCodCoordenador()%></p>
 				<!-- Menu do Aluno -->
 				<li class="active"><a href="#homeSubmenu"
@@ -158,7 +158,7 @@
 								<label class="col-sm-auto col-form-label" for="nomeCurso">Nome da Categoria</label>
 								<div class="col-sm-12">
 									<input type="text" class="form-control" name="categoria"
-										id="nomeCurso">
+										id="nomeCurso" required/>
 								</div>
 							</div>
 

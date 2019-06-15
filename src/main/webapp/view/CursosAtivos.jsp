@@ -48,7 +48,7 @@
 			<ul class="list-unstyled components">
 			
 				<!-- Tipo do usuário logado e o número do id -->
-				<p>ID: <%=aluno.getCodAluno()%></p>
+				<p>Aluno - ID: <%=aluno.getCodAluno()%></p>
 				
 				<!-- Menu do Aluno -->
 				<li><a

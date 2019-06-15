@@ -25,7 +25,7 @@ public class GetCursoProfessorController extends HttpServlet {
 		sessao.setAttribute("Curso", curso);
 
 		try {
-			res.sendRedirect("./CursoProfessor.jsp");
+			res.sendRedirect("./ProfessorCurso.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -18,7 +18,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>WEBclass - Aula</title>
-
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -59,7 +58,7 @@
 			<ul class="list-unstyled components">
 				<!-- ID do usuário-->
 				<p>
-					ID:
+					Aluno - ID:
 					<%=aluno.getCodAluno()%></p>
 				<p>
 					Curso:

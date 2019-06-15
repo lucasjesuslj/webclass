@@ -43,7 +43,7 @@
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- Tipo do usuário logado e o número do id -->
-				<p>ID: <%=aluno.getCodAluno()%></p>
+				<p>Aluno - ID: <%=aluno.getCodAluno()%></p>
 				<!-- Menu do Aluno -->
 				<li class="active"><a href="./AlunoHome.jsp">Cursos</a></li>
 				<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>

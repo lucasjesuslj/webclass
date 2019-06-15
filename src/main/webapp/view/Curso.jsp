@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="entity.CursoAtivo"%>
+<%@page import="controller.ProfessorController"%>
 <%@page import="controller.CursoAtivoController"%>
 <%@page import="controller.CursoController"%>
 <%@page import="controller.AulaController"%>
 <%@page import="entity.Curso"%>
 <%@page import="entity.Aluno"%>
+<%@page import="entity.Professor"%>
 <%@page import="entity.Aula"%>
 <%@page import="exception.CursoAtivoDAOException"%>
 <%@page
@@ -60,7 +62,7 @@
 			<ul class="list-unstyled components">
 				<!-- ID do usuário-->
 				<p>
-					ID:
+					Aluno - ID:
 					<%=aluno.getCodAluno()%></p>
 				<p>
 					Curso:
@@ -169,13 +171,18 @@
 								<!-- Armazena no objeto cursoInfo as informações do curso recuperadas pelo codCurso-->
 								<%
 									CursoController cursoController = new CursoController();
+								    ProfessorController professorController = new ProfessorController();
 
 									Curso cursoInfo = new Curso();
+									Professor professor = new Professor();
 
 									cursoInfo = cursoController.getById(curso.getCodCurso());
+									professor = professorController.getById(cursoInfo.getProfessor().getCodProfessor());
+									
 									cursoInfo.setCodCurso(curso.getCodCurso());
 								%>
 								<h3><%=cursoInfo.getNomeCurso()%></h3>
+								<h5>Professor: <%=professor.getNome()%></h5>
 							</div>
 							<div class="col-sm-2 offset-6">
 								<%

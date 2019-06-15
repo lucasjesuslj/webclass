@@ -48,7 +48,7 @@
 		<ul class="list-unstyled components">
 			<!-- Tipo do usuário logado e o número do id -->
 			<p>
-				ID:
+				Coordenador - ID:
 				<%=coordenador.getCodCoordenador()%></p>
 			<!-- Menu do Aluno -->
 			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"

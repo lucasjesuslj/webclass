@@ -49,7 +49,7 @@
 			<ul class="list-unstyled components">
 				<!-- Tipo do usuário logado e o número do id -->
 				<p>
-					ID:
+					Professor - ID:
 					<%=professor.getCodProfessor()%></p>
 				<!-- Menu do Aluno -->
 				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
@@ -148,10 +148,10 @@
 
 				<!--  Área dos Cards-->
 				<form action="./cadastrarAula" method="post">
-				<div class="row ">
-					<div class="col-md-12 espamento-image"></div>
-					<div class="col-md-12">
-						
+					<div class="row ">
+						<div class="col-md-12 espamento-image"></div>
+						<div class="col-md-12">
+
 							<div class="form-group row">
 								<label class="col-sm-auto col-form-label" for="nomeAula">Nome
 									da Aula</label>
@@ -165,37 +165,37 @@
 										id="exampleFormControlTextarea1" rows="5" required></textarea>
 								</div>
 							</div>
+						</div>
+
+						<label class="col-sm-auto col-form-label" for="categoria">Nome
+							do Curso</label>
+						<div class="col-sm-4">
+							<select class="form-control" name="curso" id="selectCategoria">
+								<%
+									CursoController cursoController = new CursoController();
+
+									List<Curso> cursos = new ArrayList<Curso>();
+
+									cursos = cursoController.getAllByProfessor(professor);
+
+									for (Curso curso : cursos) {
+								%>
+								<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
+								<%
+									}
+								%>
+							</select>
+						</div>
 					</div>
-
-					<label class="col-sm-auto col-form-label" for="categoria">Nome
-						do Curso</label>
-					<div class="col-sm-4">
-						<select class="form-control" name="curso" id="selectCategoria">
-							<%
-								CursoController cursoController = new CursoController();
-
-								List<Curso> cursos = new ArrayList<Curso>();
-
-								cursos = cursoController.getAllByProfessor(professor);
-
-								for (Curso curso : cursos) {
-							%>
-							<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
-							<%
-								}
-							%>
-						</select>
+					<div class="row">
+						<div class="col-sm-12 espacamento-bottom ">
+							<button type="submit" class="btn btn-success">Salvar</button>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12 espacamento-bottom ">
-						<button type="submit" class="btn btn-success">Salvar</button>
-					</div>
-				</div>
-			</form>
+				</form>
 			</div>
 		</div>
-		
+
 	</div>
 	<!--  Fim Área dos cards-->
 	</div>
