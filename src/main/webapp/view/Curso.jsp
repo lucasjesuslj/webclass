@@ -53,28 +53,22 @@
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<div class="sidebar-header">
-					<!-- Nome do Aluno que Logou -->
-					<h3><%=aluno.getNome()%></h3>
-				</div>
+				<!-- Nome do Aluno que Logou -->
+				<h3><%=aluno.getNome()%></h3>
 			</div>
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
 				<!-- ID do usuário-->
 				<p>
-					Aluno - ID:
+					Aluno#
 					<%=aluno.getCodAluno()%></p>
 				<p>
 					Curso:
 					<%=curso.getCodCurso()%></p>
 				<!-- Menu do Aluno -->
-				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="false"
-					class="dropdown-toggle">Cursos</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
-						<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
-					</ul>
+				<li class="active"><a href="AlunoHome.jsp">Cursos</a></li>
+				<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
+			</ul>
 		</nav>
 		<!-- Fim do menu lateral  -->
 
