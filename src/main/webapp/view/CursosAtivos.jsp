@@ -133,7 +133,7 @@
 
 
 				<!--  Área dos Cards-->
-				<div class="row">
+				<div class="row" style="margin-bottom:50px;">
 
 					<%
 						CursoAtivoController cursoAtivoController = new CursoAtivoController();
