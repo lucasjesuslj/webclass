@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Home - Aluno</title>
+<title>WEBclass - Home - Coordenador</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
@@ -159,44 +159,45 @@
 									<input type="text" class="form-control" name="nomeAula"
 										id="nomeAula">
 								</div>
+								<label class="col-sm-auto col-form-label" for="categoria">Nome
+										do Curso</label>
+										<div class="col-sm-4">
+												<select class="form-control" name="curso" id="selectCategoria">
+													<%
+														CursoController cursoController = new CursoController();
+					
+														List<Curso> cursos = new ArrayList<Curso>();
+					
+														cursos = cursoController.getAllByProfessor(professor);
+					
+														for (Curso curso : cursos) {
+													%>
+													<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
+													<%
+														}
+													%>
+												</select>
+											</div>
+							</div>
+							<div class="form-group row">	
 								<label class="col-sm-12 col-form-label" for="descricao">Descrição</label>
 								<div class="col-sm-12">
 									<textarea class="form-control" name="descricao"
 										id="exampleFormControlTextarea1" rows="5" required></textarea>
 								</div>
 							</div>
-						</div>
-
-						<label class="col-sm-auto col-form-label" for="categoria">Nome
-							do Curso</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="curso" id="selectCategoria">
-								<%
-									CursoController cursoController = new CursoController();
-
-									List<Curso> cursos = new ArrayList<Curso>();
-
-									cursos = cursoController.getAllByProfessor(professor);
-
-									for (Curso curso : cursos) {
-								%>
-								<option value="<%=curso.getCodCurso()%>"><%=curso.getNomeCurso()%></option>
-								<%
-									}
-								%>
-							</select>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12 espacamento-bottom ">
-							<button type="submit" class="btn btn-success">Salvar</button>
-						</div>
-					</div>
+							<div class="form-group row">
+									<div class="col-sm-12 espacamento-bottom ">
+										<button type="submit" class="btn btn-success">Salvar</button>
+									</div>
+								</div>
+							</div>
+					
+				</div>
 				</form>
 			</div>
-		</div>
 
-	</div>
+
 	<!--  Fim Área dos cards-->
 	</div>
 	<!--  Fim do Corpo da página -->
