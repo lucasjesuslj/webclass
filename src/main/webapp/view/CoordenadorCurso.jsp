@@ -197,7 +197,7 @@
 						<div class="tab-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel"
 								aria-labelledby="home-tab">
-								<div class="container" style="margin-top: 30px">
+								<div class="container" style="margin-top: 30px; margin-bottom:50px;">
 
 									<%
 										AulaController aulaController = new AulaController();
@@ -228,7 +228,9 @@
 							</div>
 							<div class="tab-pane fade" id="profile" role="tabpanel"
 								aria-labelledby="profile-tab">
+								<div class="container" style="margin-top: 30px; margin-bottom:50px;">
 								<p><%=cursoInfo.getDescricao()%></p>
+								</div>
 							</div>
 						</div>
 					</div>
