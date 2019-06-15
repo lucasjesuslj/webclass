@@ -33,7 +33,6 @@
 	<!-- Todos os elementos da página -->
 	<div class="wrapper">
 		<!-- Menu lateral  -->
-		<form>
 			<nav id="sidebar">
 			<div class="sidebar-header">
 				<!-- Nome do Aluno que Logou -->
@@ -49,7 +48,6 @@
 				<li><a href="CursosAtivos.jsp">Meus Cursos</a></li>
 			</ul>
 			</nav>
-		</form>
 		<!-- Fim do menu lateral  -->
 
 		<!-- Corpo da página  -->
