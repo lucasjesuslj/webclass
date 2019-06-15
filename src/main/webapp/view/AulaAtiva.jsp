@@ -111,6 +111,44 @@
 			<div class="container">
 			
 				<h2><%=aula.getNome()%></h2>
+				
+				<!-- Mostra mensagem de Erro caso o cadastro de Atividade lance uma exceção OU -->
+				<!-- Mostra mensagem de confirmação caso o Atividade seja cadastrado com sucesso -->
+				<%
+					if (request.getAttribute("mensagem") != null) {
+				%>
+
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("mensagem")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("mensagem");
+					}
+
+					else if (request.getAttribute("erro") != null) {
+				%>
+
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("erro")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("erro");
+					}
+				%>
+				
+				
 				<div class="row">
 					
 					<hr />
@@ -130,9 +168,9 @@
 				aulaAtiva = aulaAtivaController.getByAlunoCursoAndAula(cursoAtivo, aula);
 								
 				%>
-				<h4>Descrição</h4>
+				<h6>Descrição: <%=aula.getDescricao()%></h6>
 				<br>
-				<h5>Status: <%=aulaAtiva.getEstatus()%></h5>
+				<h6>Status: <%=aulaAtiva.getEstatus()%></h6>
 				
 				<!-- Tag que faz a linha de divisão -->
 				<hr />
@@ -155,11 +193,14 @@
 							
 							%>
 							
+							<form action="./atividadeAtiva" method="get">
 							<p><%=atividade.getNome()%>
+							
 							<button  class="btn btn-primary" type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
 								Acessar
 							</button>
 							</p>
+							</form>
 							<% 
 							}
 							%>
@@ -167,11 +208,15 @@
 						</div>
 						<!--  Fim coluna individual do card-->
 						<div class="col-md-12">
-						<form action="">
+						<% if ("Em Progresso".equals(aulaAtiva.getEstatus())) { %>
+						
+						<form action="./atualizarEstatusAulaAtiva" method="post">
 							<button class="btn btn-success"type="submit" name="codAtividade" value="">
 								Concluir aula
 							</button>
 						</form>
+						
+						<% } %>
 						</div>
 					</div>
 				</div>

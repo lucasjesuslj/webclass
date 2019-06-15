@@ -9,6 +9,7 @@ import java.util.List;
 import entity.Aula;
 import entity.AulaAtiva;
 import entity.CursoAtivo;
+import exception.AulaAtivaDAOException;
 
 public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 
@@ -132,7 +133,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 	}
 
 	@Override
-	public void updateStatus(AulaAtiva aulaAtiva, String status) {
+	public void updateStatus(AulaAtiva aulaAtiva, String status) throws AulaAtivaDAOException {
 
 		Connection con = null;
 		
@@ -152,7 +153,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AulaAtivaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

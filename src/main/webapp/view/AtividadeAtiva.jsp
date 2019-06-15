@@ -45,18 +45,18 @@
          <nav id="sidebar">
             <div class="sidebar-header">
                 <!-- Nome do Aluno que Logou -->
-                <h3>Lucas Jesus de Oliveira</h3>
+                <h3><%=aluno.getNome()%></h3>
             </div>
             <!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
             <ul class="list-unstyled components">
                 <!-- Tipo do usuário logado e o número do id -->
-                <p>Aluno#1213</p> 
+                <p>Aluno - ID: <%=aluno.getCodAluno()%></p>
                 <!-- Menu do Aluno -->
                 <li class="active">
-                    <a href="telaHomeAluno.html">Cursos</a>
+                    <a href="AlunoHome.jsp">Cursos</a>
                 </li>
                 <li>
-                    <a href="telaCursosAluno.html">Meus Cursos</a>
+                    <a href="CursosAtivos.jsp">Meus Cursos</a>
                 </li>
             </ul>
         </nav>
@@ -96,28 +96,28 @@
             </nav>
             <!-- Fim do menu superior -->
             <!-- Conteúdo da página -->
+                        
             <div class="container" >
                 <!-- área do título -->
                 <div class="row">
                     <div class="col-md-12">
-                        <p>Nome da Atividade</p>
+                        <p><%=atividade.getNome()%></p>
                     </div>
                 </div>
                 <!-- Fim ddo título -->
                 <!-- Tag que faz a linha de divisão -->
                 <hr />
-                <!--  Área dos Cards-->
                 <div class="row ">
                     <div class="col-md-12 espamento-image">
                     </div>
                     <div class="col-md-12">
-                        <p>a pergunta da atividade pipipi po´popopo</p>
+                        <p><%=atividade.getDescricao()%></p>
                         
                         <form>
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-form-label" for="resposta">resposta</label>
                                     <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="resposta"id="nomeAula">
+                                    <input type="text" class="form-control" name="resposta"id="nomeAula" required/>
                                         
                                 </div>
                            </div>

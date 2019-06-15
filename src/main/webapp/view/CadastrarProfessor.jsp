@@ -155,19 +155,19 @@
 									do Professor</label>
 								<div class="col-sm-12">
 									<input type="text" name="nomeProfessor" class="form-control"
-										id="nomeCurso">
+										id="nomeCurso" required/>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-auto col-form-label" for="email">E-mail</label>
 								<div class="col-sm-5">
 									<input type="email" name="emailProfessor" class="form-control"
-										id="email">
+										id="email" required/> 
 								</div>
 								<label class="col-sm-auto col-form-label" for="senha">Senha</label>
 								<div class="col-sm-5">
 									<input type="text" name="senhaProfessor" class="form-control"
-										id="senha">
+										id="senha" required/>
 								</div>
 							</div>
 

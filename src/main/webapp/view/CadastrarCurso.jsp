@@ -174,7 +174,7 @@
 								<label class="col-sm-auto col-form-label" for="categoria">Categoria</label>
 								<div class="col-sm-5">
 									<select class="form-control" name="categoria"
-										id="selectCategoria">
+										id="selectCategoria" required>
 
 										<%
 											CategoriaController categoriaController = new CategoriaController();
@@ -198,14 +198,14 @@
 									Média</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="duracao"
-										id="duracaoMedia">
+										id="duracaoMedia" required/>
 								</div>
 
 								<label class="col-sm-auto col-form-label" for="nomeCurso">Professor
 									Responsável</label>
 								<div class="col-sm-4">
 									<select class="form-control" name="professor"
-										id="selectProfessor">
+										id="selectProfessor" required>
 										<%
 											ProfessorController professorController = new ProfessorController();
 
@@ -229,7 +229,7 @@
 								<label class="col-sm-12 col-form-label" for="nomeCurso">Descrição</label>
 								<div class="col-sm-12">
 									<textarea class="form-control" name="descricao"
-										id="exampleFormControlTextarea1" rows="5"></textarea>
+										id="exampleFormControlTextarea1" rows="5" required></textarea>
 								</div>
 							</div>
 
