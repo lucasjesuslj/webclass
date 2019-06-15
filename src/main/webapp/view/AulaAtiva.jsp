@@ -130,8 +130,9 @@
 				aulaAtiva = aulaAtivaController.getByAlunoCursoAndAula(cursoAtivo, aula);
 								
 				%>
-				
-				<h3>Status: <%=aulaAtiva.getEstatus()%></h3>
+				<h4>Descrição</h4>
+				<br>
+				<h5>Status: <%=aulaAtiva.getEstatus()%></h5>
 				
 				<!-- Tag que faz a linha de divisão -->
 				<hr />
@@ -155,7 +156,7 @@
 							%>
 							
 							<p><%=atividade.getNome()%>
-							<button type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
+							<button  class="btn btn-primary" type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
 								Acessar
 							</button>
 							</p>
@@ -165,6 +166,13 @@
 
 						</div>
 						<!--  Fim coluna individual do card-->
+						<div class="col-md-12">
+						<form action="">
+							<button class="btn btn-success"type="submit" name="codAtividade" value="">
+								Concluir aula
+							</button>
+						</form>
+						</div>
 					</div>
 				</div>
 
