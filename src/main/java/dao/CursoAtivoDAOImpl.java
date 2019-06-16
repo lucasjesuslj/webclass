@@ -15,7 +15,7 @@ import exception.CursoAtivoDAOException;
 public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 
 	@Override
-	public void insertCursoAtivo(CursoAtivo cursoAtivo) {
+	public void insertCursoAtivo(CursoAtivo cursoAtivo) throws CursoAtivoDAOException {
 
 		Connection con = null;
 
@@ -41,7 +41,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 	}
 
 	@Override
-	public List<CursoAtivo> getAllByAluno(Aluno aluno) {
+	public List<CursoAtivo> getAllByAluno(Aluno aluno) throws CursoAtivoDAOException{
 
 		Connection con = null;
 
@@ -97,7 +97,8 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select estatus from wc_curso_ativo where cod_curso = ? and cod_aluno = ?";
+			String sql = "select case estatus when 'P' then 'Em Progresso' when 'C' then 'Concluído' "
+					   + "end estatus from wc_curso_ativo where cod_curso = ? and cod_aluno = ?";
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			

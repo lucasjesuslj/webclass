@@ -42,7 +42,7 @@ public class AulaDAOImpl implements AulaDAO{
 	}
 
 	@Override
-	public Aula getById(int id) {
+	public Aula getById(int id) throws AulaDAOException{
 		
 		Connection con = null;
 
@@ -86,7 +86,7 @@ public class AulaDAOImpl implements AulaDAO{
 	}
 
 	@Override
-	public List<Aula> getByCurso(Curso curso) {
+	public List<Aula> getByCurso(Curso curso) throws AulaDAOException{
 
 		Connection con = null;
 		List<Aula> aulas = new ArrayList<Aula>();
@@ -132,7 +132,7 @@ public class AulaDAOImpl implements AulaDAO{
 		return aulas;
 	}
 
-	public int getCountByCurso(Curso curso) {
+	public int getCountByCurso(Curso curso) throws AulaDAOException{
 
 		Connection con = null;
 		int quantidade = 0;
@@ -168,7 +168,7 @@ public class AulaDAOImpl implements AulaDAO{
 	}
 
 	@Override
-	public List<Aula> getByProfessor(Professor professor) {
+	public List<Aula> getByProfessor(Professor professor) throws AulaDAOException{
 		
 		Connection con = null;
 		List<Aula> aulas = new ArrayList<Aula>();

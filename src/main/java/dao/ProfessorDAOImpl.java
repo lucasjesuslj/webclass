@@ -39,7 +39,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 	}
 
 	@Override
-	public Professor getByEmailAndSenha(String email, String senha) {
+	public Professor getByEmailAndSenha(String email, String senha) throws ProfessorDAOException{
 
 		Professor professor = null;
 		Connection con = null;
@@ -79,7 +79,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 	}
 
 	@Override
-	public Professor getById(int id) {
+	public Professor getById(int id) throws ProfessorDAOException{
 
 		Connection con = null;
 
@@ -122,7 +122,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 	}
 
 	@Override
-	public List<Professor> getAll() {
+	public List<Professor> getAll() throws ProfessorDAOException{
 
 		Connection con = null;
 

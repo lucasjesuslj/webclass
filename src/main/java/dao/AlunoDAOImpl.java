@@ -79,7 +79,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 
 	@Override
-	public Aluno getById(int id) {
+	public Aluno getById(int id) throws AlunoDAOException {
 
 		Connection con = null;
 
@@ -122,7 +122,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 
 	@Override
-	public void updateEmail(Aluno aluno, String email) {
+	public void updateEmail(Aluno aluno, String email) throws AlunoDAOException{
 
 		Connection con = null;
 
@@ -148,7 +148,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 
 	@Override
-	public void updateSenha(Aluno aluno, String senha) {
+	public void updateSenha(Aluno aluno, String senha) throws AlunoDAOException{
 
 		Connection con = null;
 
@@ -174,7 +174,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 
 	@Override
-	public List<Aluno> getAll() {
+	public List<Aluno> getAll() throws AlunoDAOException{
 
 		Connection con = null;
 

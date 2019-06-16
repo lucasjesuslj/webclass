@@ -15,7 +15,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 
 	//insere Atividade Ativa  
 	@Override
-	public void insertAulaAtiva(AulaAtiva aulaAtiva) {
+	public void insertAulaAtiva(AulaAtiva aulaAtiva) throws AulaAtivaDAOException{
 
 		Connection con = null;
 
@@ -42,7 +42,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 	}
 
 	@Override
-	public AulaAtiva getByAlunoCursoAndAula(CursoAtivo cursoAtivo, Aula aula) {
+	public AulaAtiva getByAlunoCursoAndAula(CursoAtivo cursoAtivo, Aula aula) throws AulaAtivaDAOException {
 		
 		Connection con = null;
 		
@@ -86,7 +86,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 	}
 	
 	@Override
-	public List<AulaAtiva> getByAlunoAndCurso(CursoAtivo cursoAtivo) {
+	public List<AulaAtiva> getByAlunoAndCurso(CursoAtivo cursoAtivo) throws AulaAtivaDAOException {
 		
 		Connection con = null;
 		
@@ -159,7 +159,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 		}
 	}
 
-	public int getCountByCursoAtivo(CursoAtivo cursoAtivo){
+	public int getCountByCursoAtivo(CursoAtivo cursoAtivo) throws AulaAtivaDAOException{
 
 		Connection con = null;
 		int quantidade = 0;

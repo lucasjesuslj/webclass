@@ -8,9 +8,9 @@ import exception.CursoAtivoDAOException;
 
 public interface CursoAtivoDAO {
 
-	void insertCursoAtivo (CursoAtivo cursoAtivo);
+	void insertCursoAtivo (CursoAtivo cursoAtivo) throws CursoAtivoDAOException;
 	
-	List<CursoAtivo> getAllByAluno(Aluno aluno);
+	List<CursoAtivo> getAllByAluno(Aluno aluno) throws CursoAtivoDAOException;
 	
 	CursoAtivo getByAlunoAndCurso(Curso curso, Aluno aluno) throws CursoAtivoDAOException;
 }

@@ -10,8 +10,8 @@ public interface ProfessorDAO {
 
 	Professor getByEmailAndSenha(String email, String senha) throws ProfessorDAOException;
 
-	Professor getById(int id);
+	Professor getById(int id) throws ProfessorDAOException;
 
-	List<Professor> getAll();
+	List<Professor> getAll() throws ProfessorDAOException;
 
 }

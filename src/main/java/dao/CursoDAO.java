@@ -16,13 +16,14 @@ public interface CursoDAO {
 	//Recupera todos os Cursos cadastrados com Estatus = 'A'
 	List<Curso> getAll() throws CursoDAOException;
 	
-	//HD - Habilitados e Desabilitados
+	//Lista todos os cursos HD - Habilitados e Desabilitados
 	List<Curso> getAllHD() throws CursoDAOException;
 	
+	//Lista Todos os cursos de um Professor
 	List<Curso> getAllByProfessor(Professor professor) throws CursoDAOException;
 	
 	//Atualiza o Estatus do Curso
-	void updateEstatus(Curso curso, String estatus);
+	void updateEstatus(Curso curso, String estatus) throws CursoDAOException;
 	
 }
 

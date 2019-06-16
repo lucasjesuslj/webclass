@@ -11,12 +11,12 @@ public interface AlunoDAO {
 
 	Aluno getByEmailAndSenha(String email, String senha) throws AlunoDAOException;
 
-	Aluno getById(int id);
+	Aluno getById(int id) throws AlunoDAOException;
 
-	void updateEmail(Aluno aluno, String email);
+	void updateEmail(Aluno aluno, String email) throws AlunoDAOException;
 
-	void updateSenha(Aluno aluno, String senha);
+	void updateSenha(Aluno aluno, String senha) throws AlunoDAOException;
 
-	List<Aluno> getAll();
+	List<Aluno> getAll() throws AlunoDAOException;
 
 }

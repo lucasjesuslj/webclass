@@ -10,11 +10,12 @@ import java.util.List;
 import entity.Atividade;
 import entity.AtividadeAtiva;
 import entity.AulaAtiva;
+import exception.AtividadeAtivaDAOException;
 
 public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 
 	@Override
-	public void insertAtividadeAtiva(AtividadeAtiva atividadeAtiva) {
+	public void insertAtividadeAtiva(AtividadeAtiva atividadeAtiva) throws AtividadeAtivaDAOException {
 
 		Connection con = null;
 
@@ -22,7 +23,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 			con = JDBCUtil.getConnection();
 
 			String sql = "insert into wc_atividade_ativa (cod_curso, cod_aluno, cod_aula, cod_atividade,"
-					+ "estatus, comentario) values (?,?,?,?,?,?)";
+					+ "estatus) values (?,?,?,?,?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -31,7 +32,6 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 			st.setInt(3, atividadeAtiva.getAulaAtiva().getAula().getCodAula());
 			st.setInt(4, atividadeAtiva.getAtividade().getCodAtividade());
 			st.setString(5, atividadeAtiva.getEstatus());
-			st.setString(6, atividadeAtiva.getComentario());
 
 			st.executeUpdate();
 			st.close();
@@ -45,7 +45,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 	}
 
 	@Override
-	public List<AtividadeAtiva> getByAula(AulaAtiva aulaAtiva) {
+	public List<AtividadeAtiva> getByAula(AulaAtiva aulaAtiva) throws AtividadeAtivaDAOException{
 		
 		Connection con = null;
 		
@@ -96,7 +96,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 	}
 	
 	@Override
-	public void updateStatus(AtividadeAtiva atividadeAtiva, String status) {
+	public void updateStatus(AtividadeAtiva atividadeAtiva, String status) throws AtividadeAtivaDAOException{
 
 		Connection con = null;
 		

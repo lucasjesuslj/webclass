@@ -47,7 +47,7 @@ public class CursoDAOImpl implements CursoDAO {
 	}
 
 	@Override
-	public Curso getById(int id) {
+	public Curso getById(int id) throws CursoDAOException{
 
 		Connection con = null;
 
@@ -102,7 +102,7 @@ public class CursoDAOImpl implements CursoDAO {
 	}
 
 	@Override
-	public List<Curso> getAll() {
+	public List<Curso> getAll() throws CursoDAOException{
 
 		Connection con = null;
 
@@ -154,7 +154,7 @@ public class CursoDAOImpl implements CursoDAO {
 	}
 
 	@Override
-	public List<Curso> getAllHD() {
+	public List<Curso> getAllHD() throws CursoDAOException{
 		
 		Connection con = null;
 
@@ -208,7 +208,7 @@ public class CursoDAOImpl implements CursoDAO {
 	}
 
 	@Override
-	public void updateEstatus(Curso curso, String estatus) {
+	public void updateEstatus(Curso curso, String estatus) throws CursoDAOException{
 	
 		Connection con = null;
 		
@@ -244,7 +244,7 @@ public class CursoDAOImpl implements CursoDAO {
 			con = JDBCUtil.getConnection();
 
 			String sql = "select cod_curso, nome_curso, descricao, duracao, estatus, data_criacao, "
-					   + "data_alteracao from wc_curso where estatus = 'H' and cod_professor = ?";
+					   + "data_alteracao from wc_curso where estatus = 'D' and cod_professor = ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 

@@ -8,8 +8,8 @@ public interface CategoriaDAO {
 
 	void insertCategoria(Categoria categoria) throws CategoriaDAOException;
 	
-	Categoria getById(int id);
+	Categoria getById(int id) throws CategoriaDAOException;
 
-	List<Categoria> getAll();
+	List<Categoria> getAll() throws CategoriaDAOException;
 
 }

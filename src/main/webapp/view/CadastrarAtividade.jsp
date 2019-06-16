@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Home - Aluno</title>
+<title>WEBclass - Cadastrar Atividade</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"

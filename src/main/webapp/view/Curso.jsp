@@ -60,7 +60,7 @@
 			<ul class="list-unstyled components">
 				<!-- ID do usuário-->
 				<p>
-					Aluno#
+					Aluno - ID:
 					<%=aluno.getCodAluno()%></p>
 				<p>
 					Curso:
@@ -193,13 +193,19 @@
 									if (cursoAtivo == null) {
 								%>
 
+								
 								<form action="./cadastrarCursoAtivo" method="post">
 									<button type="submit" class="btn  btn-primary">Matricular-se</button>
 								</form>
 
 								<%
-									}
+									} else {
+										
 								%>
+								
+								<h5>Status: <%=cursoAtivo.getEstatus()%></h5>
+								
+								<%  }%>
 							</div>
 						</div>
 						<div class="alinhamento-form ">

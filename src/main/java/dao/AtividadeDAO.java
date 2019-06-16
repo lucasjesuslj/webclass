@@ -9,8 +9,8 @@ public interface AtividadeDAO {
 
 	void insertAtividade(Atividade atividade) throws AtividadeDAOException;
 
-	List<Atividade> getByAula(Aula aula);
+	List<Atividade> getByAula(Aula aula) throws AtividadeDAOException;
 		
-	Atividade getById(int id);
+	Atividade getById(int id) throws AtividadeDAOException;
 	
 }

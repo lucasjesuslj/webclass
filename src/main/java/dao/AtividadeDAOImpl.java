@@ -14,7 +14,7 @@ import exception.AulaDAOException;
 public class AtividadeDAOImpl implements AtividadeDAO {
 
 	@Override
-	public void insertAtividade(Atividade atividade) {
+	public void insertAtividade(Atividade atividade) throws AtividadeDAOException{
 
 		Connection con = null;
 
@@ -43,7 +43,7 @@ public class AtividadeDAOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public List<Atividade> getByAula(Aula aula) {
+	public List<Atividade> getByAula(Aula aula) throws AtividadeDAOException{
 		Connection con = null;
 		List<Atividade> atividades = new ArrayList<Atividade>();
 
@@ -90,7 +90,7 @@ public class AtividadeDAOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public Atividade getById(int id) {
+	public Atividade getById(int id) throws AtividadeDAOException{
 		
 		Connection con = null;
 

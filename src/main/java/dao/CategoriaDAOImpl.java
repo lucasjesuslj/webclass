@@ -37,7 +37,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	}
 
 	@Override
-	public Categoria getById(int id) {
+	public Categoria getById(int id) throws CategoriaDAOException{
 
 		Connection con = null;
 
@@ -76,7 +76,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	}
 
 	@Override
-	public List<Categoria> getAll() {
+	public List<Categoria> getAll() throws CategoriaDAOException{
 
 		Connection con = null;
 

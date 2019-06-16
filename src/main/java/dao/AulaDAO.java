@@ -12,10 +12,10 @@ public interface AulaDAO {
 
 	Aula getById(int id) throws AulaDAOException;
 	
-	List<Aula> getByCurso(Curso curso);
+	List<Aula> getByCurso(Curso curso) throws AulaDAOException;
 	
-	List<Aula> getByProfessor(Professor professor);
+	List<Aula> getByProfessor(Professor professor) throws AulaDAOException;
 	
-	int getCountByCurso(Curso curso);
+	int getCountByCurso(Curso curso) throws AulaDAOException;
 			
 }

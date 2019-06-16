@@ -51,6 +51,9 @@
             <ul class="list-unstyled components">
                 <!-- Tipo do usuário logado e o número do id -->
                 <p>Aluno - ID: <%=aluno.getCodAluno()%></p>
+                <p>Curso - ID: <%=curso.getCodCurso()%></p>
+                <p>Aula - ID: <%=aula.getCodAula()%></p>
+                <p>Atividade - ID: <%=atividade.getCodAtividade()%></p>
                 <!-- Menu do Aluno -->
                 <li class="active">
                     <a href="AlunoHome.jsp">Cursos</a>
@@ -107,13 +110,51 @@
                 <!-- Fim ddo título -->
                 <!-- Tag que faz a linha de divisão -->
                 <hr />
+                
+                <!-- Mostra mensagem de Erro caso o cadastro de Curso Ativo lance uma exceção OU -->
+				<!-- Mostra mensagem de confirmação caso o CursoAtivo seja cadastrado com sucesso -->
+				<%
+					if (request.getAttribute("mensagem") != null) {
+				%>
+
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("mensagem")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("mensagem");
+					}
+
+					else if (request.getAttribute("erro") != null) {
+				%>
+
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("erro")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("erro");
+					}
+				%>
+                
+                
                 <div class="row ">
                     <div class="col-md-12 espamento-image">
                     </div>
                     <div class="col-md-12">
                         <p><%=atividade.getDescricao()%></p>
                         
-                        <form>
+                        <form action="./validaRespostaAtividade" method="post">
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-form-label" for="resposta">resposta</label>
                                     <div class="col-sm-12">
