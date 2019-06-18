@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import dao.AtividadeAtivaDAO;
 import dao.AtividadeAtivaDAOImpl;
+import entity.Atividade;
 import entity.AtividadeAtiva;
 import entity.AulaAtiva;
+import exception.AtividadeAtivaDAOException;
 
 public class AtividadeAtivaController {
 
@@ -16,8 +18,8 @@ public class AtividadeAtivaController {
 
 		try {
 			dao.insertAtividadeAtiva(atividadeAtiva);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (AtividadeAtivaDAOException e) {
+			throw new AtividadeAtivaDAOException("Erro ao cadastrar Aluno no Curso");
 		}
 
 	}
@@ -48,4 +50,17 @@ public class AtividadeAtivaController {
 
 	}
 
+	public AtividadeAtiva getByAulaAtivaAndAtividade(AulaAtiva aulaAtiva, Atividade atividade) {
+		
+		AtividadeAtiva atividadeAtiva = null;
+		
+		try {
+			atividadeAtiva = dao.getByAulaAtivaAndAtividade(aulaAtiva, atividade);
+		} catch (AtividadeAtivaDAOException e) {
+			e.printStackTrace();
+		}
+		
+		return atividadeAtiva;
+		
+	}
 }

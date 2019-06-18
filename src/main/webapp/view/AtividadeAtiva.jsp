@@ -6,9 +6,11 @@
 <%@page import="entity.Atividade"%>
 <%@page import="entity.CursoAtivo"%>
 <%@page import="entity.AulaAtiva"%>
+<%@page import="entity.AtividadeAtiva"%>
 <%@page import="controller.CursoController"%>
 <%@page import="controller.AtividadeController"%>
 <%@page import="controller.AulaAtivaController"%>
+<%@page import="controller.AtividadeAtivaController"%>
 <%@page import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso"%>
 <!DOCTYPE html>
 <html lang="pt">
@@ -51,9 +53,6 @@
             <ul class="list-unstyled components">
                 <!-- Tipo do usuário logado e o número do id -->
                 <p>Aluno - ID: <%=aluno.getCodAluno()%></p>
-                <p>Curso - ID: <%=curso.getCodCurso()%></p>
-                <p>Aula - ID: <%=aula.getCodAula()%></p>
-                <p>Atividade - ID: <%=atividade.getCodAtividade()%></p>
                 <!-- Menu do Aluno -->
                 <li class="active">
                     <a href="AlunoHome.jsp">Cursos</a>
@@ -154,6 +153,27 @@
                     <div class="col-md-12">
                         <p><%=atividade.getDescricao()%></p>
                         
+                        <% 
+                        
+                        AtividadeAtivaController atividadeAtivaController = new AtividadeAtivaController();
+                        
+                        CursoAtivo cursoAtivo = new CursoAtivo();
+            			
+            			cursoAtivo.setCurso(curso);
+            			cursoAtivo.setAluno(aluno);
+            			
+            			AulaAtiva aulaAtiva = new AulaAtiva();
+            			
+            			aulaAtiva.setCursoAtivo(cursoAtivo);
+            			aulaAtiva.setAula(aula);
+            			
+            			AtividadeAtiva atividadeAtiva = new AtividadeAtiva();
+            			
+            			atividadeAtiva = atividadeAtivaController.getByAulaAtivaAndAtividade(aulaAtiva, atividade);
+                        
+            			if ("Em Progresso".equals(atividadeAtiva.getEstatus())){
+            			
+                        %>
                         <form action="./validaRespostaAtividade" method="post">
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-form-label" for="resposta">resposta</label>
@@ -171,6 +191,11 @@
                                 
                                 
                             </form>
+                        <% }  else { %>
+                        
+                        <h4>Atividade já Concluída<h4>
+                        
+                        <% } %>
                         </div>
                         </div> 
                 </div>

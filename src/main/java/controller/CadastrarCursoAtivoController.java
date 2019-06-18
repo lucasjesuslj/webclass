@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import entity.Aluno;
+import entity.Atividade;
+import entity.AtividadeAtiva;
 import entity.Aula;
 import entity.AulaAtiva;
 import entity.Curso;
@@ -25,7 +27,9 @@ public class CadastrarCursoAtivoController extends HttpServlet {
 
 		CursoAtivoController cursoAtivoController = new CursoAtivoController();
  		AulaController aulaController = new AulaController();
+ 		AtividadeController atividadeController = new AtividadeController();
  		AulaAtivaController aulaAtivaController = new AulaAtivaController();
+ 		AtividadeAtivaController atividadeAtivaController = new AtividadeAtivaController();
 		
 		CursoAtivo cursoAtivo = new CursoAtivo();
 		
@@ -38,7 +42,7 @@ public class CadastrarCursoAtivoController extends HttpServlet {
 		try {
 			cursoAtivoController.insertCursoAtivo(cursoAtivo);
 			
-			//Insere 1 registro de AulaAtiva pra cada aula do Curso
+			//Insere 1 registro de AulaAtiva pra cada Aula do Curso
 			//com estatus 'P' (Em Progresso)
 			List<Aula> aulas = aulaController.getByCurso(curso);
 			
@@ -49,6 +53,22 @@ public class CadastrarCursoAtivoController extends HttpServlet {
 				aulaAtiva.setAula(aula);
 				
 				aulaAtivaController.insertAulaAtiva(aulaAtiva);
+				
+				//Insere 1 registro de AtividadeAtiva pra cada Atividade de cada Aula do Curso
+				//com estatus 'P' (Em Progresso)
+				
+				List<Atividade> atividades = atividadeController.getByAula(aula);
+				
+				for (Atividade atividade : atividades) {
+					
+					AtividadeAtiva atividadeAtiva = new AtividadeAtiva();
+					
+					atividadeAtiva.setAulaAtiva(aulaAtiva);
+					atividadeAtiva.setAtividade(atividade);
+					
+					atividadeAtivaController.insertAtividadeAtiva(atividadeAtiva);
+					
+				}
 				
 			}
 			

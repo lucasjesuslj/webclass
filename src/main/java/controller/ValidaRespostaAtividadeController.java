@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import entity.Aluno;
 import entity.Atividade;
 import entity.AtividadeAtiva;
@@ -58,9 +57,8 @@ public class ValidaRespostaAtividadeController extends HttpServlet {
 			
 			atividadeAtiva.setAulaAtiva(aulaAtiva);
 			atividadeAtiva.setAtividade(atividade);
-			atividadeAtiva.setEstatus("C");
 			
-			atividadeAtivaController.insertAtividadeAtiva(atividadeAtiva);
+			atividadeAtivaController.updateStatus(atividadeAtiva, "C");
 			
 			try {
 				req.getRequestDispatcher("./AtividadeAtiva.jsp").forward(req, res);
