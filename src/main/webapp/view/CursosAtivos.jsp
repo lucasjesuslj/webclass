@@ -107,23 +107,13 @@
 					</div>
 					<!-- Campo de pesquisa -->
 					<div class="col-md-8 col-sm-3">
-						<input type="text" class="form-control" id="pesquisa"
-							placeholder="Pesquisar">
+						
 					</div>
 					<!-- Fim do campo de pesquisa -->
 					<!-- Combo de filtro de categoria -->
 					<div class="dropdown col-md-4 col-sm-2">
 						<!-- Configuração do botão -->
-						<button class="btn btn-secondary dropdown-toggle" type="button"
-							id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">Categoria</button>
-						<!-- itens do dropdown -->
-						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-							<button class="dropdown-item" type="button">Ação</button>
-							<button class="dropdown-item" type="button">Another Ação</button>
-							<button class="dropdown-item" type="button">Something
-								else here</button>
-						</div>
+						
 					</div>
 					<!-- Fim do combo de filtro de categoria -->
 				</div>

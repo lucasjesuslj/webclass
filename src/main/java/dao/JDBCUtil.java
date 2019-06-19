@@ -6,7 +6,7 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class JDBCUtil {
 	private static final String SERVER = "bdtester.mysql.uhserver.com";
-	private static final String DATABASE = "tester2";
+	private static final String DATABASE = "bdtester";
 	private static final String USER = "tester2";
 	private static final String PASSWORD = "fatecanos@1";
 	private static final String TIMEZONE = "UTC";
