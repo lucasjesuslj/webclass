@@ -140,6 +140,7 @@ public class LoginController extends HttpServlet {
 
 					// Passa a entidade Coordenador pra sessão
 					sessao.setAttribute("Coordenador", coordenador);
+					sessao.setAttribute("mensagem", "Bem vindo "+coordenador.getNome());
 
 					res.sendRedirect("./CoordenadorHome.jsp");
 

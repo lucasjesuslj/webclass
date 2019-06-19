@@ -38,6 +38,7 @@
 			<!-- Nome do Coordenador que Logou -->
 			<%
 				Coordenador coordenador = (Coordenador) session.getAttribute("Coordenador");
+				String mensagem = (String)session.getAttribute("mensagem");
 			%>
 			<h3><%=coordenador.getNome()%></h3>
 		</div>
@@ -45,7 +46,7 @@
 		<ul class="list-unstyled components">
 			<!-- Tipo do usuário logado e o número do id -->
 			<p>
-				Coordenador - ID:
+				Coordenador - ID: <%=mensagem %>
 				<%=coordenador.getCodCoordenador()%></p>
 			<!-- Menu do Aluno -->
 			<li class="active"><a href="#homeSubmenu" data-toggle="collapse"

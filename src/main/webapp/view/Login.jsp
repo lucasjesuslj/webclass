@@ -69,6 +69,42 @@
 				</ul>
 			</div>
 			<!-- Fim da criação das abas -->
+			
+			<!-- Mostra mensagem de Erro caso o cadastro de Atividade lance uma exceção OU -->
+				<!-- Mostra mensagem de confirmação caso o Atividade seja cadastrado com sucesso -->
+				<%
+					if (request.getAttribute("mensagem") != null) {
+				%>
+
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("mensagem")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("mensagem");
+					}
+
+					else if (request.getAttribute("erro") != null) {
+				%>
+
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<%=request.getAttribute("erro")%>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<%
+					request.removeAttribute("erro");
+					}
+				%>
 
 			<!-- Começo do LOGIN -->
 			<div class="tab-content" id="myTabContent">

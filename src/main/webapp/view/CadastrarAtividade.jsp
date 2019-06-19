@@ -126,6 +126,7 @@
 				</div>
 
 				<%
+					request.getAttribute("mensagem")
 					request.removeAttribute("mensagem");
 					}
 

@@ -19,7 +19,7 @@ public class AulaController {
 		try {
 			dao.insertAula(aula);
 		} catch (AulaDAOException e) {
-			throw new AulaDAOException("Não cadastrou");
+			throw new AulaDAOException("Erro ao cadastrar Aula");
 		}
 
 	}
