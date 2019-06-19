@@ -120,6 +120,58 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 
 		return professor;
 	}
+	
+	@Override
+	public void updateEmail(Professor professor, String email) throws ProfessorDAOException{
+
+		Connection con = null;
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "update wc_professor set email = ? where cod_professor = ?";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			st.setString(1, email);
+			st.setInt(2, professor.getCodProfessor());
+
+			st.executeUpdate();
+			st.close();
+
+		} catch (SQLException e) {
+			throw new ProfessorDAOException();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+	}
+
+	@Override
+	public void updateSenha(Professor professor, String senha) throws ProfessorDAOException{
+
+		Connection con = null;
+
+		try {
+			con = JDBCUtil.getConnection();
+
+			String sql = "update wc_professor set senha = ? where cod_professor = ?";
+
+			PreparedStatement st = con.prepareStatement(sql);
+
+			st.setString(1, senha);
+			st.setInt(2, professor.getCodProfessor());
+
+			st.executeUpdate();
+			st.close();
+
+		} catch (SQLException e) {
+			throw new ProfessorDAOException();
+		} finally {
+			JDBCUtil.close(con);
+		}
+
+	}
 
 	@Override
 	public List<Professor> getAll() throws ProfessorDAOException{

@@ -75,7 +75,7 @@
                                 <a class="nav-link" href="#">perfil</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Sair</a>
+                                <a class="nav-link" href="Sair.jsp">Sair</a>
                             </li>
                         </ul>
                     </div>

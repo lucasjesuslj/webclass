@@ -92,7 +92,7 @@
 						<li class="nav-item active"><a class="nav-link" href="#">Perfil</a>
 						</li>
 						<li class="nav-item active"><a class="nav-link"
-							href="http://localhost:8080/WebClass/Login.jsp">Sair</a></li>
+							href="Sair.jsp">Sair</a></li>
 					</ul>
 				</div>
 			</div>

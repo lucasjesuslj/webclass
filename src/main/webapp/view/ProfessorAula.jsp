@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="entity.CursoAtivo"%>
-<%@page import="controller.CursoAtivoController"%>
-<%@page import="controller.CursoController"%>
-<%@page import="controller.AulaController"%>
 <%@page import="entity.Curso"%>
-<%@page import="entity.Aluno"%>
 <%@page import="entity.Professor"%>
 <%@page import="entity.Aula"%>
-<%@page import="exception.CursoAtivoDAOException"%>
-<%@page
-	import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso, entity.CursoAtivo"%>
+<%@page import="entity.Atividade"%>
+<%@page import="entity.CursoAtivo"%>
+<%@page import="entity.AulaAtiva"%>
+<%@page import="controller.CursoController"%>
+<%@page import="controller.AtividadeController"%>
+<%@page import="controller.AulaAtivaController"%>
+<%@page import="java.util.List, java.util.ArrayList, entity.Aluno, entity.Curso" %>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -18,8 +17,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WEBclass - Curso - Professor</title>
-
+<title>WEBclass - Aula</title>
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -45,6 +43,7 @@
 	<%
 		Professor professor = (Professor) session.getAttribute("Professor");
 		Curso curso = (Curso) session.getAttribute("Curso");
+		Aula aula = (Aula) session.getAttribute("Aula");
 	%>
 
 	<!-- Todos os elementos da página -->
@@ -52,10 +51,8 @@
 		<!-- Menu lateral  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<div class="sidebar-header">
-					<!-- Nome do Professor que Logou -->
-					<h3><%=professor.getNome()%></h3>
-				</div>
+				<!-- Nome do Aluno que Logou -->
+				<h3><%=professor.getNome()%></h3>
 			</div>
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
 			<ul class="list-unstyled components">
@@ -108,15 +105,13 @@
 				</div>
 			</nav>
 			<!-- Fim do menu superior -->
-			<!-- Conteúdo da página -->
+			<!-- Conteúdo da Aula -->
 			<div class="container">
-
-				<!-- Fim do título -->
-				<!-- Tag que faz a linha de divisão -->
-				<hr />
-
-				<!-- Mostra mensagem de Erro caso o cadastro de Curso Ativo lance uma exceção OU -->
-				<!-- Mostra mensagem de confirmação caso o CursoAtivo seja cadastrado com sucesso -->
+			
+				<h2><%=aula.getNome()%></h2>
+				
+				<!-- Mostra mensagem de Erro caso o cadastro de Atividade lance uma exceção OU -->
+				<!-- Mostra mensagem de confirmação caso o Atividade seja cadastrado com sucesso -->
 				<%
 					if (request.getAttribute("mensagem") != null) {
 				%>
@@ -150,84 +145,56 @@
 					request.removeAttribute("erro");
 					}
 				%>
-
+				
+				
+				<div class="row">
+					
+					<hr />
+				</div>
+				<!-- Fim da área de pesquisa -->
+				
+				<h6>Descrição: <%=aula.getDescricao()%></h6>
+				<br>
+				
+				<!-- Tag que faz a linha de divisão -->
+				<hr />
 				<!--  Área dos Cards-->
 				<div class="row ">
-					<div class="col-md-12 mb-2">
-						<img class="card-img-top" alt="Card header image"
-							src="https://placeimg.com/640/480/nature" width="1110"
-							height="400">
-					</div>
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-sm-4">
-								<!-- Armazena no objeto cursoInfo as informações do curso recuperadas pelo codCurso-->
-								<%
-									CursoController cursoController = new CursoController();
+					<!--  Começo coluna individual do card-->
+					<div class="col-md-12 ">
+						<div class="container" style="margin-top: 30px">
 
-									Curso cursoInfo = new Curso();
+							<%
+							
+							AtividadeController atividadeController = new AtividadeController();
+							
+							List<Atividade> atividades = new ArrayList<Atividade>();
+							
+							atividades = atividadeController.getByAula(aula);
+							
+							for (Atividade atividade : atividades)
+							{
+							
+							%>
+							
+							<form action="./atividadeProfessor" method="get">
+							<p><%=atividade.getNome()%>
+							
+							<button  class="btn btn-primary" type="submit" name="codAtividade" value="<%=atividade.getCodAtividade()%>">
+								Acessar
+							</button>
+							</p>
+							</form>
+							<% 
+							}
+							%>
 
-									cursoInfo = cursoController.getById(curso.getCodCurso());
-									cursoInfo.setCodCurso(curso.getCodCurso());
-								%>
-								<h3><%=cursoInfo.getNomeCurso()%></h3>
-							</div>
-							<div class="col-sm-2 offset-6">
-								
-							</div>
 						</div>
-						<div class="alinhamento-form ">
-							<ul class="nav nav-tabs justify-content-center" id="myTab"
-								role="tablist">
-								<li class="nav-item"><a class="nav-link active"
-									id="home-tab" data-toggle="tab" href="#home" role="tab"
-									aria-controls="home" aria-selected="true">Aulas</a></li>
-								<li class="nav-item"><a class="nav-link" id="profile-tab"
-									data-toggle="tab" href="#profile" role="tab"
-									aria-controls="profile" aria-selected="false">Descrição</a></li>
-							</ul>
-						</div>
-						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active" id="home" role="tabpanel"
-								aria-labelledby="home-tab">
-								<div class="container" style="margin-top: 30px">
-
-									<%
-										AulaController aulaController = new AulaController();
-
-										List<Aula> aulas = new ArrayList<Aula>();
-
-										aulas = aulaController.getByCurso(curso);
-
-										for (Aula aula : aulas) {
-									%>
-									<form action="./aulaProfessor" method="get">
-										<ul class="list-group">
-											<!--  <a href="" target="_blank"> -->
-											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
-											<p><%=aula.getDescricao()%>
-											<button type="submit" name="codAula" value="<%=aula.getCodAula()%>">
-												Acessar
-											</button>
-											</p>
-											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
-											</li>
-											</a>
-										</ul>
-									</form>
-									<%
-										}
-									%>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="profile" role="tabpanel"
-								aria-labelledby="profile-tab">
-								<p><%=cursoInfo.getDescricao()%></p>
-							</div>
-						</div>
+						<!--  Fim coluna individual do card-->
 					</div>
 				</div>
-				<!--  Fim Área dos cards -->
+
+				<!--  Fim Área dos cards-->
 			</div>
 			<!--  Fim do Corpo da página -->
 

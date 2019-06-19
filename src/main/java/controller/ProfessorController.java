@@ -20,17 +20,17 @@ public class ProfessorController {
 		}
 
 	}
-	
+
 	// verifica se um Professor existe passando o Email e a Senha
 	public Professor getByEmailAndSenha(String email, String senha) {
 		Professor professor = null;
-		
+
 		professor = dao.getByEmailAndSenha(email, senha);
-		
+
 		if (professor == null) {
 			throw new ProfessorDAOException("Email e/ou senha inválidos");
-		} 
-		
+		}
+
 		return professor;
 	}
 
@@ -46,6 +46,28 @@ public class ProfessorController {
 		}
 
 		return professor;
+	}
+
+	// Atualizar Email do Professor
+	public void updateEmail(Professor professor, String email) {
+
+		try {
+			dao.updateEmail(professor, email);
+		} catch (ProfessorDAOException e) {
+			throw new ProfessorDAOException("Tamanho máximo pro campo e-mail excedido");
+		}
+
+	}
+
+	// Atualizar Senha do Professor
+	public void updateSenha(Professor professor, String senha) {
+
+		try {
+			dao.updateSenha(professor, senha);
+		} catch (ProfessorDAOException e) {
+			throw new ProfessorDAOException("Tamanho máximo pro campo senha excedido");
+		}
+
 	}
 
 	// lista todos os Professores
@@ -64,4 +86,3 @@ public class ProfessorController {
 	}
 
 }
-

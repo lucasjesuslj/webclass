@@ -56,7 +56,6 @@
 				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
 				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
 				<li><a href="CadastrarAtividade.jsp">Cadastrar Atividade</a></li>
-				<li><a href="telaCadastroConteudo.html">Cadastrar Conteudo</a>
 				</li>	
 			</ul>
 		</nav>
@@ -90,9 +89,9 @@
 					<!-- itens do menu superior -->
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="#">perfil</a>
+							<li class="nav-item active"><a class="nav-link" href="PerfilProfessor.jsp">Perfil</a>
 							</li>
-							<li class="nav-item active"><a class="nav-link" href="#">Sair</a>
+							<li class="nav-item active"><a class="nav-link" href="Sair.jsp">Sair</a>
 							</li>
 						</ul>
 					</div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="entity.Curso"%>
-<%@page import="entity.Aluno"%>
+<%@page import="entity.Professor"%>
 <%@page import="entity.Aula"%>
 <%@page import="entity.Atividade"%>
 <%@page import="entity.CursoAtivo"%>
@@ -35,7 +35,7 @@
 
 	<!-- Recupera a instância do Aluno criado na sessão e o curso acessado pelo botão "Acessar"-->
 	<%
-		Aluno aluno = (Aluno) session.getAttribute("Aluno");
+		Professor professor = (Professor) session.getAttribute("Professor");
 		Curso curso = (Curso) session.getAttribute("Curso");
 		Aula aula = (Aula) session.getAttribute("Aula");
 		Atividade atividade = (Atividade) session.getAttribute("Atividade");
@@ -46,20 +46,19 @@
          <!-- Menu lateral  -->
          <nav id="sidebar">
             <div class="sidebar-header">
-                <!-- Nome do Aluno que Logou -->
-                <h3><%=aluno.getNome()%></h3>
+                <!-- Nome do Professor que Logou -->
+					<h3><%=professor.getNome()%></h3>
             </div>
             <!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
             <ul class="list-unstyled components">
                 <!-- Tipo do usuário logado e o número do id -->
-                <p>Aluno - ID: <%=aluno.getCodAluno()%></p>
-                <!-- Menu do Aluno -->
-                <li class="active">
-                    <a href="AlunoHome.jsp">Cursos</a>
-                </li>
-                <li>
-                    <a href="CursosAtivos.jsp">Meus Cursos</a>
-                </li>
+                <p>
+					Professor - ID:
+					<%=professor.getCodProfessor()%></p>
+				<!-- Menu do Professor -->
+				<li><a href="ProfessorHome.jsp">Cursos Ministrados</a></li>
+				<li><a href="CadastrarAula.jsp">Cadastro Aula</a></li>
+				<li><a href="CadastrarAtividade.jsp">Cadastrar Atividade</a></li>
             </ul>
         </nav>
         <!-- Fim do menu lateral  -->        
@@ -87,7 +86,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="PerfilAluno.jsp">perfil</a>
+                                <a class="nav-link" href="PerfilProfessor.jsp">Perfil</a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="Sair.jsp">Sair</a>
@@ -153,49 +152,6 @@
                     <div class="col-md-12">
                         <p><%=atividade.getDescricao()%></p>
                         
-                        <% 
-                        
-                        AtividadeAtivaController atividadeAtivaController = new AtividadeAtivaController();
-                        
-                        CursoAtivo cursoAtivo = new CursoAtivo();
-            			
-            			cursoAtivo.setCurso(curso);
-            			cursoAtivo.setAluno(aluno);
-            			
-            			AulaAtiva aulaAtiva = new AulaAtiva();
-            			
-            			aulaAtiva.setCursoAtivo(cursoAtivo);
-            			aulaAtiva.setAula(aula);
-            			
-            			AtividadeAtiva atividadeAtiva = new AtividadeAtiva();
-            			
-            			atividadeAtiva = atividadeAtivaController.getByAulaAtivaAndAtividade(aulaAtiva, atividade);
-                        
-            			if ("Em Progresso".equals(atividadeAtiva.getEstatus())){
-            			
-                        %>
-                        <form action="./validaRespostaAtividade" method="post">
-                                <div class="form-group row">
-                                    <label class="col-sm-12 col-form-label" for="resposta">resposta</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="resposta"id="nomeAula" required/>
-                                        
-                                </div>
-                           </div>
-                                <div class="row">
-                                    <div class="col-sm-12 espacamento-bottom ">
-                                        <button type="submit" class="btn  btn-danger">voltar</button>
-                                        <button type="submit" class="btn btn-success">Salvar</button>
-                                    </div>
-                                </div>
-                                
-                                
-                            </form>
-                        <% }  else { %>
-                        
-                        <h4>Atividade já Concluída<h4>
-                        
-                        <% } %>
                         </div>
                         </div> 
                 </div>

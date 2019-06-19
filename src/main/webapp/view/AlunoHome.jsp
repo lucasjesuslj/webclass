@@ -30,13 +30,15 @@
 </head>
 
 <body>
+
+	<%Aluno aluno = (Aluno) session.getAttribute("Aluno");%>
+
 	<!-- Todos os elementos da página -->
 	<div class="wrapper">
 		<!-- Menu lateral  -->
 			<nav id="sidebar">
 			<div class="sidebar-header">
 				<!-- Nome do Aluno que Logou -->
-				<%Aluno aluno = (Aluno) session.getAttribute("Aluno");%>
 				<h3><%=aluno.getNome()%></h3>
 			</div>
 			<!-- é uma lista de pra colocar o conteúdo dentro do menu lateral -->
@@ -78,9 +80,9 @@
 				<!-- itens do menu superior -->
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="nav navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Perfil</a>
+						<li class="nav-item active"><a class="nav-link" href="PerfilAluno.jsp">Perfil</a>
 						</li>
-						<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/WebClass/Login.jsp">Sair</a>
+						<li class="nav-item active"><a class="nav-link" href="Sair.jsp">Sair</a>
 						</li>
 					</ul>
 				</div>

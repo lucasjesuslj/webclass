@@ -140,7 +140,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AlunoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -166,7 +166,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AlunoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -206,7 +206,7 @@ public class AlunoDAOImpl implements AlunoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AlunoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

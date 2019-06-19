@@ -53,8 +53,8 @@ public class AlunoController {
 
 		try {
 			dao.updateEmail(aluno, email);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (AlunoDAOException e) {
+			throw new AlunoDAOException("Tamanho máximo pro campo e-mail excedido");
 		}
 
 	}
@@ -64,8 +64,8 @@ public class AlunoController {
 
 		try {
 			dao.updateSenha(aluno, senha);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (AlunoDAOException e) {
+			throw new AlunoDAOException("Tamanho máximo pro campo senha excedido");
 		}
 
 	}

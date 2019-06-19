@@ -244,7 +244,7 @@ public class CursoDAOImpl implements CursoDAO {
 			con = JDBCUtil.getConnection();
 
 			String sql = "select cod_curso, nome_curso, descricao, duracao, estatus, data_criacao, "
-					   + "data_alteracao from wc_curso where estatus = 'D' and cod_professor = ?";
+					   + "data_alteracao from wc_curso where cod_professor = ?";
 
 			PreparedStatement st = con.prepareStatement(sql);
 

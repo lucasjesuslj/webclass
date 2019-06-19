@@ -95,7 +95,7 @@
 						<li class="nav-item active"><a class="nav-link" href="#">Perfil</a>
 						</li>
 						<li class="nav-item active"><a class="nav-link"
-							href="http://localhost:8080/WebClass/Login.jsp">Sair</a></li>
+							href="Sair.jsp">Sair</a></li>
 					</ul>
 				</div>
 			</div>
@@ -213,12 +213,6 @@
 											<!--  <a href="" target="_blank"> -->
 											<!--	<li class="list-group-item d-flex justify-content-between align-items-center"> -->
 											<p><%=aula.getDescricao()%></p>
-											<button type="submit">
-												<i class="fa fa-angle-right" aria-hidden="true">Acessar</i>
-											</button>
-											<!--	<i class="fa fa-angle-right" aria-hidden="true"></i> -->
-											</li>
-											</a>
 										</ul>
 									</form>
 									<%

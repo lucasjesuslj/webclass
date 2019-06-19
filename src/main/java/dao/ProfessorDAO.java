@@ -12,6 +12,10 @@ public interface ProfessorDAO {
 
 	Professor getById(int id) throws ProfessorDAOException;
 
+	void updateEmail(Professor professor, String email) throws ProfessorDAOException;
+
+	void updateSenha(Professor professor, String senha) throws ProfessorDAOException;
+	
 	List<Professor> getAll() throws ProfessorDAOException;
 
 }
