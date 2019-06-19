@@ -86,7 +86,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeAtivaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -117,7 +117,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeAtivaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -135,7 +135,7 @@ public class AtividadeAtivaDAOImpl implements AtividadeAtivaDAO {
 			
 			String sql = "select case estatus " 
 					   + "when 'P' then 'Em Progresso' "
-					   + "when 'C' then 'Concluída' "
+					   + "when 'C' then 'Concluï¿½da' "
 					   + "end estatus from wc_atividade_ativa "
 					   + "where cod_curso = ? and cod_aluno = ? and cod_aula = ? and cod_atividade = ?"; 
 			

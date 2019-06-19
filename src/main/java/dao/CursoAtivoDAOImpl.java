@@ -33,7 +33,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoAtivoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -80,7 +80,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoAtivoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -97,7 +97,7 @@ public class CursoAtivoDAOImpl implements CursoAtivoDAO {
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select case estatus when 'P' then 'Em Progresso' when 'C' then 'Concluído' "
+			String sql = "select case estatus when 'P' then 'Em Progresso' when 'C' then 'Concluï¿½do' "
 					   + "end estatus from wc_curso_ativo where cod_curso = ? and cod_aluno = ?";
 			
 			PreparedStatement st = con.prepareStatement(sql);

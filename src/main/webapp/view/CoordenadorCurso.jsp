@@ -153,7 +153,7 @@
 					</div>
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-12">
 								<!-- Armazena no objeto cursoInfo as informações do curso recuperadas pelo codCurso-->
 								<%
 									CursoController cursoController = new CursoController();
@@ -164,8 +164,8 @@
 									cursoInfo.setCodCurso(curso.getCodCurso());
 								%>
 								<h3><%=cursoInfo.getNomeCurso()%></h3>
-								</div>
-								<div class="col-md-2 offset-6">
+								
+								<div class="col-md-2  ">
 								<!--  Verifica se o curso está Desabilitado para mostrar o botão -->
 								<%
 									if ("D".equals(cursoInfo.getEstatus())) {

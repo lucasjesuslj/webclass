@@ -67,7 +67,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CategoriaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -108,7 +108,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CategoriaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

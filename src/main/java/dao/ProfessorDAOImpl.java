@@ -113,7 +113,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new ProfessorDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -208,7 +208,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new ProfessorDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

@@ -81,7 +81,7 @@ public class AtividadeDAOImpl implements AtividadeDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

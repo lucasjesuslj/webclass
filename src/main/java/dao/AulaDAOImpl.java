@@ -124,7 +124,7 @@ public class AulaDAOImpl implements AulaDAO{
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AulaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -158,7 +158,7 @@ public class AulaDAOImpl implements AulaDAO{
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AulaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -176,7 +176,7 @@ public class AulaDAOImpl implements AulaDAO{
 		try {
 			con = JDBCUtil.getConnection();
 
-			String sql = "select cod_aula, a.descricao from wc_aula a inner join wc_curso c "
+			String sql = "select cod_aula, a.descricao, c.cod_curso, c.nome_curso from wc_aula a inner join wc_curso c "
 					   + "on c.cod_curso = a.cod_curso where c.cod_professor = ? order by a.descricao";
 
 			PreparedStatement st = con.prepareStatement(sql);
@@ -189,12 +189,18 @@ public class AulaDAOImpl implements AulaDAO{
 
 				int codAula = rs.getInt("cod_aula");
 				String descricao = rs.getString("a.descricao");
+				int codCurso = rs.getInt("c.cod_curso");
+				String nomeCurso = rs.getString("c.nome_curso");
 
 				Aula aula = new Aula();
+				Curso curso = new Curso();
 
 				aula.setCodAula(codAula);
 				aula.setDescricao(descricao);
-
+				curso.setCodCurso(codCurso);
+				curso.setNomeCurso(nomeCurso);
+				aula.setCurso(curso);
+				
 				aulas.add(aula);
 
 			}
@@ -202,7 +208,7 @@ public class AulaDAOImpl implements AulaDAO{
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AulaDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

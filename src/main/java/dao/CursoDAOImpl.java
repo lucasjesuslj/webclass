@@ -93,7 +93,7 @@ public class CursoDAOImpl implements CursoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -145,7 +145,7 @@ public class CursoDAOImpl implements CursoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -199,7 +199,7 @@ public class CursoDAOImpl implements CursoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -279,7 +279,7 @@ public class CursoDAOImpl implements CursoDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CursoDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}

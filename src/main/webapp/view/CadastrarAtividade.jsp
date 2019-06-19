@@ -162,7 +162,7 @@
 									da Aula</label>
 								<div class="col-sm-4">
 									<select class="form-control" name="codAula"
-										id="selectCategoria">
+										id="selectCategoria" required/>
 										<%
 											AulaController aulaController = new AulaController();
 
@@ -171,9 +171,10 @@
 											aulas = aulaController.getByProfessor(professor);
 
 											for (Aula aula : aulas) {
+												
 										%>
 
-										<option value="<%=aula.getCodAula()%>"><%=aula.getDescricao()%></option>
+										<option value="<%=aula.getCodAula()%>"><%=aula.getDescricao()%> - <%=aula.getCurso().getNomeCurso()%></option>
 
 										<%
 											}

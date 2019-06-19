@@ -9,6 +9,7 @@ import java.util.List;
 import entity.Aula;
 import entity.AulaAtiva;
 import entity.CursoAtivo;
+import exception.AtividadeDAOException;
 import exception.AulaAtivaDAOException;
 
 public class AulaAtivaDAOImpl implements AulaAtivaDAO {
@@ -34,7 +35,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -53,7 +54,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			
 			String sql = "select case estatus " 
 					   + "when 'P' then 'Em Progresso' "
-					   + "when 'C' then 'Concluída' "
+					   + "when 'C' then 'Concluï¿½da' "
 					   + "end estatus from wc_aula_ativa where cod_curso = ? and cod_aluno = ? and cod_aula = ?"; 
 			
 			PreparedStatement st = con.prepareStatement(sql);
@@ -77,7 +78,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -124,7 +125,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
@@ -188,7 +189,7 @@ public class AulaAtivaDAOImpl implements AulaAtivaDAO {
 			st.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new AtividadeDAOException();
 		} finally {
 			JDBCUtil.close(con);
 		}
