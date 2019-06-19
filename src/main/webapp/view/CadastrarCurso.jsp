@@ -235,7 +235,6 @@
 
 							<div class="row">
 								<div class="col-sm-12 espacamento-bottom ">
-									<button type="submit" class="btn  btn-danger">Cancelar</button>
 									<button type="submit" class="btn btn-success">Salvar</button>
 								</div>
 							</div>
