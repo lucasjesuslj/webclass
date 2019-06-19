@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class JDBCUtil {
-	private static final String SERVER = "localhost";
-	private static final String DATABASE = "webclass";
-	private static final String USER = "root";
-	private static final String PASSWORD = "";
+	private static final String SERVER = "bdtester.mysql.uhserver.com";
+	private static final String DATABASE = "bdtester";
+	private static final String USER = "tester2";
+	private static final String PASSWORD = "fatecanos@1";
 	private static final String TIMEZONE = "UTC";
 	private static final String ENCODGIN = "UTF-8";
 	private static MysqlDataSource ds = null;
